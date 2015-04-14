@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,6 +39,10 @@ public class MainActivity extends ActionBarActivity {
         //Run task (here is where you would pass data to doInBackground())
         myTask.execute();
 
+
+
+
+        RelativeLayout relative = (RelativeLayout)findViewById(R.id.main);
         //Full json result
         try {
           jobj = myTask.get();
@@ -47,10 +55,24 @@ public class MainActivity extends ActionBarActivity {
         try {
         // Getting JSON Array
         jarr = jobj.getJSONArray(TAG_PICTURES);
-        JSONObject c = jarr.getJSONObject(0);
-        // Storing  JSON item in a Variable
-        String likes = c.getString(TAG_LIKES);
-        String name = c.getString(TAG_LIKES);
+
+            for(int i = 0 ; i < jarr.length(); i++) {
+                JSONObject c = jarr.getJSONObject(i);
+                // Storing  JSON item in a Variable
+                String likes = c.getString(TAG_LIKES);
+                Log.e("LIKES:", likes);
+                Log.e("OBJECT:", String.valueOf(c));
+
+                TextView valueLikes = new TextView(this);
+                valueLikes.setText(likes);
+                valueLikes.setId(i);
+
+                relative.addView(valueLikes);
+
+
+            }
+
+
 
         } catch (JSONException e) {
             e.printStackTrace();
