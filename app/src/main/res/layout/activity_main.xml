@@ -6,19 +6,55 @@
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
     android:id="@+id/main">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView" />
-
-    <ImageView  android:id="@+id/populair1"
+    <ImageView  android:id="@+id/popular1"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
         android:background="#ff07380e" />
-    <ImageView  android:id="@+id/populair2"
+    <ImageView  android:id="@+id/popular2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_toRightOf="@+id/populair1"
+        android:layout_toRightOf="@+id/popular1"
         android:background="#383737" />
+    <ImageView  android:id="@+id/popular3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_toRightOf="@+id/popular2"
+        android:background="#AA113700" />
+
+    <ImageView  android:id="@+id/popular4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/popular1"
+        android:background="#FF113700" />
+    <ImageView  android:id="@+id/popular5"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_toRightOf="@+id/popular4"
+        android:layout_below="@+id/popular2"
+        android:background="#61F1AA00" />
+    <ImageView  android:id="@+id/popular6"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_toRightOf="@+id/popular5"
+        android:layout_below="@+id/popular3"
+        android:background="#FF3700" />
+
+    <ImageView  android:id="@+id/popular7"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/popular4"
+        android:background="#AD1137" />
+    <ImageView  android:id="@+id/popular8"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_toRightOf="@+id/popular7"
+        android:layout_below="@+id/popular5"
+        android:background="#11AA00" />
+    <ImageView  android:id="@+id/popular9"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_toRightOf="@+id/popular8"
+        android:layout_below="@+id/popular6"
+        android:background="#00FFA0" />
 
 </RelativeLayout>

@@ -79,7 +79,7 @@ public class MainActivity extends ActionBarActivity {
             e.printStackTrace();
         }
 
-        new LoadPicturesTask((ImageView) findViewById(R.id.populair1))
+        new LoadPicturesTask((ImageView) findViewById(R.id.popular1))
                 .execute("https://java.sogeti.nl/JavaBlog/wp-content/uploads/2009/04/android_icon_256.png");
 
     }
