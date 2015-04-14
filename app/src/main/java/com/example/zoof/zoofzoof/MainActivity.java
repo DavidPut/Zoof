@@ -1,20 +1,24 @@
 package com.example.zoof.zoofzoof;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Iterator;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
+import AsyncTasks.LoadPicturesTask;
 import AsyncTasks.PictureGetTask;
-import library.JSONParser;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -56,6 +60,10 @@ public class MainActivity extends ActionBarActivity {
             e.printStackTrace();
         }
 
+        new LoadPicturesTask((ImageView) findViewById(R.id.imageView3))
+                .execute("http://java.sogeti.nl/JavaBlog/wp-content/uploads/2009/04/android_icon_256.png");
+
+
     }
 
 
@@ -80,4 +88,5 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
