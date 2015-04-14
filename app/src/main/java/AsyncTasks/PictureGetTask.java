@@ -2,8 +2,11 @@ package AsyncTasks;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.zoof.zoofzoof.MainActivity;
+import com.example.zoof.zoofzoof.R;
 
 import org.json.JSONObject;
 
@@ -16,7 +19,7 @@ public class PictureGetTask extends AsyncTask<String, Void, JSONObject> {
 
     private MainActivity activity;
     private static String KEY_SUCCESS = "success";
-    private int responseCode = 0;
+
 
     public PictureGetTask(MainActivity activity) {
         this.activity = activity;
@@ -32,6 +35,7 @@ public class PictureGetTask extends AsyncTask<String, Void, JSONObject> {
         JSONObject json = userFunction.getPictures();
 
         return json;
+
     }
 
     @Override
@@ -39,9 +43,15 @@ public class PictureGetTask extends AsyncTask<String, Void, JSONObject> {
 
         if(json != null)
         {
-          Log.e("Picture_get_task", json.toString());
+          //Log.e("Picture_get_task", json.toString());
         }
 
     }
+
+
+
+
+
+
 }
 

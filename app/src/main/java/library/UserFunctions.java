@@ -15,7 +15,7 @@ public class UserFunctions {
     private static String URL = "http://student.cmi.hro.nl/0848947/Jaar3/Zoof_api/";
     //pictures get tag
     private static String tag_pictures_get = "getPictures";
-
+    //pictures post tag
     private static String tag_pictures_post = "postPicture";
 
 
@@ -27,7 +27,7 @@ public class UserFunctions {
 
 
     /**
-     * function make Picture Request
+     * function Picture Request
      * */
     public JSONObject getPictures(){
         // Building Parameters
