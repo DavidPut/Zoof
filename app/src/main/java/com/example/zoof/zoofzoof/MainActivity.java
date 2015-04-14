@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -17,6 +18,7 @@ import org.json.JSONObject;
 import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
 
+import AsyncTasks.LoadPicturesTask;
 import AsyncTasks.PictureGetTask;
 import library.JSONParser;
 
@@ -76,6 +78,9 @@ public class MainActivity extends ActionBarActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        new LoadPicturesTask((ImageView) findViewById(R.id.populair1))
+                .execute("https://java.sogeti.nl/JavaBlog/wp-content/uploads/2009/04/android_icon_256.png");
 
     }
 

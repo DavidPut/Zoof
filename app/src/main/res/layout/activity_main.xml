@@ -10,6 +10,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView" />
 
-
+    <ImageView  android:id="@+id/populair1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:background="#ff07380e" />
+    <ImageView  android:id="@+id/populair2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_toRightOf="@+id/populair1"
+        android:background="#383737" />
 
 </RelativeLayout>
