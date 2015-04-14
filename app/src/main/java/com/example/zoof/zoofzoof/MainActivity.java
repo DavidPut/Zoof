@@ -69,7 +69,6 @@ public class MainActivity extends ActionBarActivity {
 
                 relative.addView(valueLikes);
 
-
             }
 
 
