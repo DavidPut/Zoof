@@ -63,17 +63,15 @@ public class MainActivity extends ActionBarActivity {
                 // Storing  JSON item in a Variable
                 String likes = c.getString(TAG_LIKES);
                 Log.e("LIKES:", likes);
-                Log.e("OBJECT:", String.valueOf(c));
+                //Log.e("OBJECT:", String.valueOf(c));
 
-                TextView valueLikes = new TextView(this);
-                valueLikes.setText(likes);
-                valueLikes.setId(i);
-
-                relative.addView(valueLikes);
+//              TextView valueLikes = new TextView(this);
+//              valueLikes.setText(likes);
+//              valueLikes.setId(i);
+//
+//              relative.addView(valueLikes);
 
             }
-
-
 
         } catch (JSONException e) {
             e.printStackTrace();
