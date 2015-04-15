@@ -51,6 +51,11 @@ public class CameraActivity extends ActionBarActivity {
                 photo = (Bitmap) data.getExtras().get("data");
                 imageView.setImageBitmap(photo);
             }
+            else {
+                //Go back to mainactivity
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }
     }
 
     private void upload() {
