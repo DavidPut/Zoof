@@ -15,6 +15,7 @@ import java.io.ByteArrayOutputStream;
 
 
 import AsyncTasks.PictureUploadTask;
+import library.Base64;
 
 
 public class CameraActivity extends ActionBarActivity {
@@ -59,10 +60,31 @@ public class CameraActivity extends ActionBarActivity {
     }
 
     private void upload() {
+        if (photo.getWidth() >= photo.getHeight()){
+
+            photo = Bitmap.createBitmap(
+                    photo,
+                    photo.getWidth()/2 - photo.getHeight()/2,
+                    0,
+                    photo.getHeight(),
+                    photo.getHeight()
+            );
+
+        }else{
+
+            photo = Bitmap.createBitmap(
+                    photo,
+                    0,
+                    photo.getHeight()/2 - photo.getWidth()/2,
+                    photo.getWidth(),
+                    photo.getWidth()
+            );
+        }
+        
         ByteArrayOutputStream bao = new ByteArrayOutputStream();
         photo.compress(Bitmap.CompressFormat.JPEG, 90, bao);
         byte[] ba = bao.toByteArray();
-        ba1 = library.Base64.encodeBytes(ba);
+        ba1 = Base64.encodeBytes(ba);
 
         // Upload image to server
         new PictureUploadTask(ba1, this).execute();
