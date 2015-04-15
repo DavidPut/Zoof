@@ -42,16 +42,6 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Display display = getWindowManager().getDefaultDisplay();
-        DisplayMetrics outMetrics = new DisplayMetrics ();
-        display.getMetrics(outMetrics);
-
-        float density  = getResources().getDisplayMetrics().density;
-        float dpHeight = outMetrics.heightPixels / density;
-        float dpWidth  = outMetrics.widthPixels / density;
-        Log.e("debug:",String.valueOf(dpHeight));
-        Log.e("debug:",String.valueOf(dpWidth));
-
         btn_camera = (Button) findViewById(R.id.button);
         btn_camera.setOnClickListener(new View.OnClickListener() {
 
