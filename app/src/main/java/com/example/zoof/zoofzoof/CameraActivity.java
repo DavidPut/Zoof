@@ -32,14 +32,9 @@ public class CameraActivity extends ActionBarActivity {
         setContentView(R.layout.activity_camera);
         this.imageView = (ImageView)this.findViewById(R.id.Picture);
 
-        btn_picture = (Button) findViewById(R.id.Button_click);
-        btn_picture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, 100);
-            }
-        });
+        //Start camera on startup
+        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, 100);
 
         btn_upload = (Button) findViewById(R.id.Button_upload);
         btn_upload.setOnClickListener(new View.OnClickListener() {
@@ -59,21 +54,13 @@ public class CameraActivity extends ActionBarActivity {
     }
 
     private void upload() {
-//        // Image location URL
-//        Log.e("path", "----------------" + picturePath);
-//
-        // Image
-//        Bitmap bm = BitmapFactory.decodeFile(picturePath);
         ByteArrayOutputStream bao = new ByteArrayOutputStream();
         photo.compress(Bitmap.CompressFormat.JPEG, 90, bao);
         byte[] ba = bao.toByteArray();
         ba1 = library.Base64.encodeBytes(ba);
 
-        Log.e("base64", "-----" + ba1);
-
         // Upload image to server
         new PictureUploadTask(ba1, this).execute();
-
     }
 
 

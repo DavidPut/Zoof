@@ -10,20 +10,13 @@
         android:layout_height="400dp"
         android:contentDescription="@string/camera_description" />
 
-    <Button
-        android:id="@+id/Button_click"
-        android:text="@string/camera_click_image"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Picture" />
 
     <Button
         android:id="@+id/Button_upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/camera_upload_image"
-        android:layout_below="@+id/Button_click"
+        android:layout_below="@+id/Picture"
         android:layout_centerInParent="true" />
 
 </RelativeLayout>

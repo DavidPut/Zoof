@@ -1,10 +1,14 @@
 package AsyncTasks;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.zoof.zoofzoof.CameraActivity;
+import com.example.zoof.zoofzoof.MainActivity;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -35,7 +39,6 @@ public class PictureUploadTask extends AsyncTask<Void, Void, JSONObject> {
 
     public PictureUploadTask(String ba1, CameraActivity activity)
     {
-        Log.e("UPLOADTASK", "YEP1");
        ba = ba1;
        this.activity = activity;
       pd = new ProgressDialog(activity);
@@ -76,5 +79,10 @@ public class PictureUploadTask extends AsyncTask<Void, Void, JSONObject> {
         super.onPostExecute(result);
         pd.hide();
         pd.dismiss();
+
+        Toast.makeText(activity, "Picture uploaded", Toast.LENGTH_SHORT).show();
+        activity.startActivity(new Intent(activity, MainActivity.class));
     }
+
+
 }

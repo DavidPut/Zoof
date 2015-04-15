@@ -46,7 +46,6 @@ public class UserFunctions {
         ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("tag", TAG_UPLOAD));
         params.add(new BasicNameValuePair("base64", ba));
-        params.add(new BasicNameValuePair("ImageName", System.currentTimeMillis() + ".jpg"));
         JSONObject json = jsonParser.getJSONFromUrl(URL, params);
 
         return json;

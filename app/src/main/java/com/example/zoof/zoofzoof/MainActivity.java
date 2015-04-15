@@ -49,6 +49,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CameraActivity.class);
                 startActivity(intent);
+
             }
         });
 
