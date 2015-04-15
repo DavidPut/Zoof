@@ -52,6 +52,5 @@ public class PictureGetTask extends AsyncTask<String, Void, JSONObject> {
 
 
 
-
 }
 

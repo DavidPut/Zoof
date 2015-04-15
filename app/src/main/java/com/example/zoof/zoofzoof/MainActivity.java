@@ -58,38 +58,40 @@ public class MainActivity extends ActionBarActivity {
         myTask.execute();
 
 
-        RelativeLayout relative = (RelativeLayout)findViewById(R.id.main);
-        //Full json result
-        try {
-          jobj = myTask.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
 
-        try {
-        // Getting JSON Array
-        jarr = jobj.getJSONArray(TAG_PICTURES);
 
-            for(int i = 0 ; i < jarr.length(); i++) {
-                JSONObject c = jarr.getJSONObject(i);
-                // Storing  JSON item in a Variable
-                String likes = c.getString(TAG_LIKES);
-                Log.e("LIKES:", likes);
-                //Log.e("OBJECT:", String.valueOf(c));
-
-//              TextView valueLikes = new TextView(this);
-//              valueLikes.setText(likes);
-//              valueLikes.setId(i);
+//        RelativeLayout relative = (RelativeLayout)findViewById(R.id.main);
+//        //Full json result
+//        try {
+//          jobj = myTask.get();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        }
 //
-//              relative.addView(valueLikes);
-
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+//        try {
+//        // Getting JSON Array
+//        jarr = jobj.getJSONArray(TAG_PICTURES);
+//
+//            for(int i = 0 ; i < jarr.length(); i++) {
+//                JSONObject c = jarr.getJSONObject(i);
+//                // Storing  JSON item in a Variable
+//                String likes = c.getString(TAG_LIKES);
+//                Log.e("LIKES:", likes);
+//                //Log.e("OBJECT:", String.valueOf(c));
+//
+////              TextView valueLikes = new TextView(this);
+////              valueLikes.setText(likes);
+////              valueLikes.setId(i);
+////
+////              relative.addView(valueLikes);
+//
+//            }
+//
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
         new LoadPicturesTask((ImageView) findViewById(R.id.popular1))
                 .execute("https://java.sogeti.nl/JavaBlog/wp-content/uploads/2009/04/android_icon_256.png");

@@ -15,8 +15,12 @@ public class UserFunctions {
     private static String URL = "http://zoofzoof.nl/api/";
     //pictures get tag
     private static String tag_pictures_get = "getPictures";
-    //pictures post tag
     private static String tag_pictures_post = "postPicture";
+
+    //pictures upload
+    private String TAG_UPLOAD = "upload_picture";
+
+
 
     // constructor
     public UserFunctions(){
@@ -25,7 +29,7 @@ public class UserFunctions {
 
 
     /**
-     * function Picture Request
+     * function make Picture Request
      * */
     public JSONObject getPictures(){
         // Building Parameters
@@ -34,6 +38,17 @@ public class UserFunctions {
         JSONObject json = jsonParser.getJSONFromUrl(URL, params);
 
         // return json
+        return json;
+    }
+
+    public JSONObject uploadPictures(String ba){
+        // Building Parameters
+        ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", TAG_UPLOAD));
+        params.add(new BasicNameValuePair("base64", ba));
+        params.add(new BasicNameValuePair("ImageName", System.currentTimeMillis() + ".jpg"));
+        JSONObject json = jsonParser.getJSONFromUrl(URL, params);
+
         return json;
     }
 
