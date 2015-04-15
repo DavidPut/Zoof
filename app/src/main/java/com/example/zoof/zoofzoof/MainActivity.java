@@ -3,7 +3,9 @@ package com.example.zoof.zoofzoof;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +41,16 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics ();
+        display.getMetrics(outMetrics);
+
+        float density  = getResources().getDisplayMetrics().density;
+        float dpHeight = outMetrics.heightPixels / density;
+        float dpWidth  = outMetrics.widthPixels / density;
+        Log.e("debug:",String.valueOf(dpHeight));
+        Log.e("debug:",String.valueOf(dpWidth));
 
         btn_camera = (Button) findViewById(R.id.button);
         btn_camera.setOnClickListener(new View.OnClickListener() {
