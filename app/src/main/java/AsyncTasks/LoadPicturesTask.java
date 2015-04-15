@@ -35,12 +35,34 @@ public class LoadPicturesTask extends AsyncTask<String, Void, Bitmap> {
             Log.e("test",urldisplay);
             Bitmap mIcon11 = null;
             try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
+                InputStream in = new URL(urldisplay).openStream();
                 mIcon11 = BitmapFactory.decodeStream(in);
             } catch (Exception e) {
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
             }
+
+            if (mIcon11.getWidth() >= mIcon11.getHeight()){
+
+                mIcon11 = Bitmap.createBitmap(
+                        mIcon11,
+                        mIcon11.getWidth()/2 - mIcon11.getHeight()/2,
+                        0,
+                        mIcon11.getHeight(),
+                        mIcon11.getHeight()
+                );
+
+            }else{
+
+                mIcon11 = Bitmap.createBitmap(
+                        mIcon11,
+                        0,
+                        mIcon11.getHeight()/2 - mIcon11.getWidth()/2,
+                        mIcon11.getWidth(),
+                        mIcon11.getWidth()
+                );
+            }
+
             return mIcon11;
         }
 

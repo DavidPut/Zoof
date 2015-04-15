@@ -35,6 +35,8 @@ public class MainActivity extends ActionBarActivity {
     private static final String TAG_PICTURES = "pictures";
     private static final String TAG_LIKES = "likes";
     private static final String TAG_URL = "url";
+    private int []popularIDs = new int[] {R.id.popular1, R.id.popular2, R.id.popular3, R.id.popular4, R.id.popular5, R.id.popular6, R.id.popular7, R.id.popular8, R.id.popular9};
+
     Button btn_camera;
 
 
@@ -74,7 +76,6 @@ public class MainActivity extends ActionBarActivity {
 
         try {
 
-        int [] popularIDs = new int[] {R.id.popular1, R.id.popular2, R.id.popular3, R.id.popular4, R.id.popular5, R.id.popular6, R.id.popular7, R.id.popular8, R.id.popular9};
         // Getting JSON Array
         jarr = jobj.getJSONArray(TAG_PICTURES);
 
@@ -83,7 +84,6 @@ public class MainActivity extends ActionBarActivity {
                 // Storing  JSON item in a Variable
                 String likes = c.getString(TAG_LIKES);
                 String url = c.getString(TAG_URL);
-                //Log.e("OBJECT:", String.valueOf(c));
                 // Moet de thumbnails inladen van alle bestanden en in d
 
                 new LoadPicturesTask((ImageView) findViewById(popularIDs[i]))
