@@ -58,10 +58,10 @@ public class CameraActivity extends ActionBarActivity {
     }
 
     private void MakePic() {
-        // Check if camera exist
+        //Check if camera exist
         if (getApplicationContext().getPackageManager().hasSystemFeature(
                 PackageManager.FEATURE_CAMERA)) {
-            // Open default camera
+            //Open default camera
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
 
@@ -74,13 +74,12 @@ public class CameraActivity extends ActionBarActivity {
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 100 && resultCode == RESULT_OK) {
+        if (requestCode == 100 && resultCode == RESULT_OK && fileUri != null) {
 
             selectedImage = data.getData();
             photo = (Bitmap) data.getExtras().get("data");
 
-            // Cursor to get image uri to display
-
+            //Hier gaat het fout -> meegegeven foto is leeg
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
             Cursor cursor = getContentResolver().query(selectedImage,
                     filePathColumn, null, null, null);
@@ -93,6 +92,10 @@ public class CameraActivity extends ActionBarActivity {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             ImageView imageView = (ImageView) findViewById(R.id.Picture);
             imageView.setImageBitmap(photo);
+        }
+        else{
+            Log.e("ERROR", "Er is iets fout gegaan.");
+            Log.e("ERROR_DETAIL", String.valueOf(fileUri));
         }
     }
 
