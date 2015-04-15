@@ -12,7 +12,7 @@ public class UserFunctions {
     private JSONParser jsonParser;
 
     //URL
-    private static String URL = "http://student.cmi.hro.nl/0848947/Jaar3/Zoof_api/";
+    private static String URL = "http://zoofzoof.nl/api";
     //pictures get tag
     private static String tag_pictures_get = "getPictures";
     //pictures post tag
