@@ -18,8 +18,6 @@ public class UserFunctions {
     //pictures post tag
     private static String tag_pictures_post = "postPicture";
 
-
-
     // constructor
     public UserFunctions(){
         jsonParser = new JSONParser();

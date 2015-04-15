@@ -46,7 +46,7 @@ public class LoadPicturesTask extends AsyncTask<String, Void, Bitmap> {
 
         protected void onPostExecute(Bitmap result) {
             bmImage.setImageBitmap(result);
-            Log.e("test","wat een haat");
+
         }
 }
 

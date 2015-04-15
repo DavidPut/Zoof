@@ -1,10 +1,13 @@
 package com.example.zoof.zoofzoof;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -29,6 +32,7 @@ public class MainActivity extends ActionBarActivity {
     private JSONArray jarr;
     private static final String TAG_PICTURES = "pictures";
     private static final String TAG_LIKES = "likes";
+    Button btn_camera;
 
 
     @Override
@@ -36,12 +40,20 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btn_camera = (Button) findViewById(R.id.button);
+        btn_camera.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CameraActivity.class);
+                startActivity(intent);
+            }
+        });
+
         //Get task (can add params for a constructor if needed)
         PictureGetTask myTask = new PictureGetTask(this); //
         //Run task (here is where you would pass data to doInBackground())
         myTask.execute();
-
-
 
 
         RelativeLayout relative = (RelativeLayout)findViewById(R.id.main);
