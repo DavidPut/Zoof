@@ -1,6 +1,7 @@
 package com.example.zoof.zoofzoof;
 
 
+import android.app.ActionBar;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -38,6 +39,7 @@ public class MainActivity extends ActionBarActivity {
     private int []popularIDs = new int[] {R.id.popular1, R.id.popular2, R.id.popular3, R.id.popular4, R.id.popular5, R.id.popular6, R.id.popular7, R.id.popular8, R.id.popular9};
 
     Button btn_camera;
+
 
     //Timer
     private CountDownTimer countDownTimer;

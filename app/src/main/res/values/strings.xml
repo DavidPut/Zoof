@@ -12,7 +12,7 @@
     <string name="button_profile_desc">Profile image</string>
     <string name="button_camera_txt">Camera</string>
     <string name="button_profile_txt">Profile</string>
-    <string name="button_random_txt">Random</string>
+    <string name="button_random_txt">Discover</string>
 
     //Camera
     <string name="camera_click_image">Click image</string>
