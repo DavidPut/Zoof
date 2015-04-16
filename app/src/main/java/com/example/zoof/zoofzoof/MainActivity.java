@@ -4,6 +4,7 @@ package com.example.zoof.zoofzoof;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
@@ -15,10 +16,14 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+
 import AsyncTasks.LoadPicturesTask;
 import AsyncTasks.PictureGetTask;
 
@@ -34,13 +39,19 @@ public class MainActivity extends ActionBarActivity {
 
     Button btn_camera;
 
+    //Timer
+    private CountDownTimer countDownTimer;
+    private boolean timerHasStarted = false;
+    public TextView text;
+    private final long startTime = 86400000;
+
+    private final long interval = 1 * 1000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         //Search
         handleIntent(getIntent());
@@ -85,11 +96,20 @@ public class MainActivity extends ActionBarActivity {
 
                 new LoadPicturesTask((ImageView) findViewById(popularIDs[i]))
                         .execute(url);
-//              TextView valueLikes = new TextView(this);
-//              valueLikes.setText(likes);
-//              valueLikes.setId(i);
-//
-//              relative.addView(valueLikes);
+              TextView valueLikes = new TextView(this);
+              valueLikes.setText(likes);
+              valueLikes.setId(i);
+
+              relative.addView(valueLikes);
+
+                //Timer
+                setContentView(R.layout.activity_main);
+                text = (TextView) this.findViewById(R.id.timer);
+                countDownTimer = new MyCountDownTimer(startTime, interval);
+                text.setText(text.getText() + String.valueOf(startTime / 1000));
+
+                countDownTimer.start();
+                timerHasStarted = true;
 
             }
 
@@ -146,5 +166,26 @@ public class MainActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
 
+    }
+
+    public class MyCountDownTimer extends CountDownTimer {
+        public MyCountDownTimer(long startTime, long interval) {
+            super(startTime, interval);
+        }
+
+        @Override
+        public void onFinish() {
+            text.setText("Wipe!");
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            text.setText(""+String.format("%02d:%02d:%02d",
+                    TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
+                    TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) -
+                            TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)), // The change is in this line
+                    TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+        }
     }
 }

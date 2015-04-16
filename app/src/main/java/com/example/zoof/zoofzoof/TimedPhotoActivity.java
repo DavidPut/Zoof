@@ -29,7 +29,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
         //Set actionbar title to filtered tag
         getSupportActionBar().setTitle(tag);
 
-        //timer
+        //Timer
         setContentView(R.layout.activity_timed_photo);
         text = (TextView) this.findViewById(R.id.timer);
         countDownTimer = new MyCountDownTimer(startTime, interval);
