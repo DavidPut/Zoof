@@ -46,11 +46,11 @@
         android:clickable="true"/>
 
     <ImageView  android:id="@+id/popular7"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_below="@+id/popular4"
-        android:background="#AD1137"
-        android:clickable="true"/>
+    android:layout_width="120dp"
+    android:layout_height="120dp"
+    android:layout_below="@+id/popular4"
+    android:background="#AD1137"
+    android:clickable="true"/>
     <ImageView  android:id="@+id/popular8"
         android:layout_width="120dp"
         android:layout_height="120dp"
@@ -66,13 +66,81 @@
         android:background="#00FFA0"
         android:clickable="true"/>
 
+    <ImageView  android:id="@+id/popular10"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/popular7"
+        android:background="#AFCC32"
+        android:clickable="true"/>
+    <ImageView  android:id="@+id/popular11"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_toRightOf="@+id/popular10"
+        android:layout_below="@+id/popular8"
+        android:background="#AFCC32"
+        android:clickable="true"/>
+    <ImageView  android:id="@+id/popular12"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_toRightOf="@+id/popular11"
+        android:layout_below="@+id/popular9"
+        android:background="#AFCC32"
+        android:clickable="true"/>
+
+
+      <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:id="@+id/button"
+        android:background="#E53232"
+        android:textColor="#FFFFFF"
+        android:contentDescription="@string/button_camera_desc"
+        android:layout_toRightOf="@+id/popular7"
+        android:drawableLeft="@drawable/ic_action_camera"
+        android:drawableStart="@drawable/ic_action_camera"
+        android:text="@string/button_camera_txt"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/popular12"
+        android:layout_below="@+id/popular10"
+        android:layout_toLeftOf="@+id/popular12" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Camera"
-        android:id="@+id/button"
-        android:layout_below="@+id/popular7"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp"/>
+        android:drawableStart="@drawable/ic_action_person"
+        android:drawableLeft="@drawable/ic_action_person"
+        android:text="@string/button_profile_txt"
+        android:scaleType="fitCenter"
+        android:id="@+id/button_profile"
+        android:background="#E53232"
+        android:textColor="#FFFFFF"
+        android:contentDescription="@string/button_profile_desc"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/button"
+        android:layout_below="@+id/popular11"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="@string/button_profile_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:textColor="#FFFFFF"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/button_random_txt"
+        android:drawableLeft="@drawable/ic_action_warning"
+        android:drawableStart="@drawable/ic_action_warning"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/popular11"
+        android:src="@drawable/ic_action_warning"
+        android:layout_toLeftOf="@+id/popular11"
+        android:layout_below="@+id/popular10"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:background="#E53232" />
 
 </RelativeLayout>
