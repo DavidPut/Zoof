@@ -53,6 +53,14 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Timer
+        text = (TextView) this.findViewById(R.id.timer);
+        countDownTimer = new MyCountDownTimer(startTime, interval);
+        text.setText(text.getText() + String.valueOf(startTime / 1000));
+
+        countDownTimer.start();
+        timerHasStarted = true;
+
         //Search
         handleIntent(getIntent());
 
@@ -102,20 +110,12 @@ public class MainActivity extends ActionBarActivity {
 
               relative.addView(valueLikes);
 
-                //Timer
-                setContentView(R.layout.activity_main);
-                text = (TextView) this.findViewById(R.id.timer);
-                countDownTimer = new MyCountDownTimer(startTime, interval);
-                text.setText(text.getText() + String.valueOf(startTime / 1000));
-
-                countDownTimer.start();
-                timerHasStarted = true;
-
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
 
     }
 
