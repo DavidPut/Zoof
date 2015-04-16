@@ -14,5 +14,11 @@
 
     //Menu icons
     <string name="icon_camera">Camera</string>
-    
+
+    //Search
+    <string name="ic_search">Test</string>
+    <string name="search_title">Test</string>
+    <string name="app_label">Test</string>
+    <string name="search_hint">#tag</string>
+
 </resources>

@@ -3,30 +3,18 @@ package com.example.zoof.zoofzoof;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
-
 import AsyncTasks.LoadPicturesTask;
 import AsyncTasks.PictureGetTask;
-import library.JSONParser;
-
 
 public class MainActivity extends ActionBarActivity {
 
@@ -56,9 +44,9 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        //Get task (can add params for a constructor if needed)
+        //Get task
         PictureGetTask myTask = new PictureGetTask(this); //
-        //Run task (here is where you would pass data to doInBackground())
+        //Run task
         myTask.execute();
 
         RelativeLayout relative = (RelativeLayout)findViewById(R.id.main);
@@ -103,6 +91,7 @@ public class MainActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
         return true;
     }
 
@@ -117,7 +106,7 @@ public class MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
+
     }
 }

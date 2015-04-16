@@ -4,6 +4,7 @@
     tools:context=".MainActivity"
     android:id="@+id/main">
 
+
     <ImageView  android:id="@+id/popular1"
         android:layout_width="120dp"
         android:layout_height="120dp"
