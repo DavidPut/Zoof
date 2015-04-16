@@ -42,6 +42,7 @@ public class CameraActivity extends ActionBarActivity {
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, 100);
 
+
         btn_upload = (Button) findViewById(R.id.Button_upload);
         btn_upload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +62,7 @@ public class CameraActivity extends ActionBarActivity {
                 //Go back to mainactivity
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
     }
 

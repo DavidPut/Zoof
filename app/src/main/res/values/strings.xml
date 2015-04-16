@@ -19,5 +19,12 @@
     <string name="ic_search">Test</string>
     <string name="search_title">Test</string>
     <string name="search_hint">#tag</string>
+    <string name="title_activity_timed_photo">TimedPhotoActivity</string>
+
+    //TimedPhoto
+    <string name="button_message">Message</string>
+    <string name="button_like">+1</string>
+    <string name="button_description_msg">Message</string>
+    <string name="button_description_like">Like</string>
 
 </resources>

@@ -99,16 +99,17 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         handleIntent(intent);
-        Log.e("HIER1", "JA");
     }
 
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            Log.e("HIER2", "JA");
             String query = intent.getStringExtra(SearchManager.QUERY);
             //use the query to search your data somehow
             Log.e("QUERY", query);
 
+            Intent i=new Intent(this,TimedPhotoActivity.class);
+            i.putExtra("tag", query);
+            startActivity(i);
         }
     }
 

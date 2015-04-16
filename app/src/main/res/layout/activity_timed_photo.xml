@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TimedPhotoActivity">
+
+    <ImageView
+        android:id="@+id/Picture"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:contentDescription="@string/camera_description" />
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/button_message"-->
+        <!--android:id="@+id/button_message"-->
+        <!--android:layout_alignTop="@+id/button_like"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_marginLeft="40dp"-->
+        <!--android:layout_marginStart="40dp"/>-->
+
+    <ImageButton
+        android:id="@+id/button_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_chat"
+        android:layout_alignTop="@+id/button_like"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:contentDescription="@string/button_description_msg" />
+
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_like"
+        android:id="@+id/button_like"
+        android:layout_below="@+id/Picture"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
+        android:src="@drawable/ic_action_important"
+        android:contentDescription="@string/button_description_like" />
+
+
+</RelativeLayout>
