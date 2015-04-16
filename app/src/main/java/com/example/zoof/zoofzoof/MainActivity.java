@@ -61,9 +61,6 @@ public class MainActivity extends ActionBarActivity {
         //Run task (here is where you would pass data to doInBackground())
         myTask.execute();
 
-
-
-
         RelativeLayout relative = (RelativeLayout)findViewById(R.id.main);
         //Full json result
         try {
@@ -101,8 +98,6 @@ public class MainActivity extends ActionBarActivity {
         }
 
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

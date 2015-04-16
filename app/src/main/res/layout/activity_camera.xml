@@ -10,13 +10,24 @@
         android:layout_height="400dp"
         android:contentDescription="@string/camera_description" />
 
+    <EditText
+        android:id="@+id/tag"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/tag_hint"
+        android:inputType="text"
+        android:layout_below="@+id/Picture"
+        android:layout_alignLeft="@+id/Button_upload"
+        android:layout_alignStart="@+id/Button_upload"
+        android:layout_alignRight="@+id/Button_upload"
+        android:layout_alignEnd="@+id/Button_upload" />
 
     <Button
         android:id="@+id/Button_upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/camera_upload_image"
-        android:layout_below="@+id/Picture"
-        android:layout_centerInParent="true" />
+        android:layout_below="@+id/tag"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

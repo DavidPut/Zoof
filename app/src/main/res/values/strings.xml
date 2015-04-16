@@ -10,5 +10,9 @@
     <string name="camera_click_image">Click image</string>
     <string name="camera_upload_image">Upload image</string>
     <string name="camera_description">My camera picture</string>
+    <string name="tag_hint">#tag</string>
+
+    //Menu icons
+    <string name="icon_camera">Camera</string>
     
 </resources>

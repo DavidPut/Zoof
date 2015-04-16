@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 
@@ -20,18 +21,22 @@ import library.Base64;
 
 public class CameraActivity extends ActionBarActivity {
 
-    Button btn_picture, btn_upload;
-    String picturePath;
+    Button btn_upload;
+
     private ImageView imageView;
     Bitmap photo;
     String ba1;
-
+    EditText tag;
+    String tag_value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
         this.imageView = (ImageView)this.findViewById(R.id.Picture);
+
+        //Edit tag
+        tag   = (EditText)findViewById(R.id.tag);
 
         //Start camera on startup
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -60,6 +65,8 @@ public class CameraActivity extends ActionBarActivity {
     }
 
     private void upload() {
+
+        //Resize picture
         if (photo.getWidth() >= photo.getHeight()){
 
             photo = Bitmap.createBitmap(
@@ -80,14 +87,19 @@ public class CameraActivity extends ActionBarActivity {
                     photo.getWidth()
             );
         }
-        
+
+        //Compress to base64
         ByteArrayOutputStream bao = new ByteArrayOutputStream();
         photo.compress(Bitmap.CompressFormat.JPEG, 90, bao);
         byte[] ba = bao.toByteArray();
         ba1 = Base64.encodeBytes(ba);
 
+        //Get input value
+        Log.v("EditText", tag.getText().toString());
+        tag_value = tag.getText().toString();
+
         // Upload image to server
-        new PictureUploadTask(ba1, this).execute();
+        new PictureUploadTask(ba1, this, tag_value).execute();
     }
 
 

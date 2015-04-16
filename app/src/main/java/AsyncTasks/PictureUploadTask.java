@@ -34,14 +34,16 @@ public class PictureUploadTask extends AsyncTask<Void, Void, JSONObject> {
     private CameraActivity activity;
     private ProgressDialog pd;
     private String TAG_UPLOAD = "upload_picture";
+    private String tag_value;
 //
 
 
-    public PictureUploadTask(String ba1, CameraActivity activity)
+    public PictureUploadTask(String ba1, CameraActivity activity, String value)
     {
        ba = ba1;
        this.activity = activity;
-      pd = new ProgressDialog(activity);
+       pd = new ProgressDialog(activity);
+       tag_value = value;
     }
 
     protected void onPreExecute() {
@@ -54,9 +56,8 @@ public class PictureUploadTask extends AsyncTask<Void, Void, JSONObject> {
     @Override
     protected JSONObject doInBackground(Void... params) {
 
-
         UserFunctions userFunction = new UserFunctions();
-        JSONObject json = userFunction.uploadPictures(ba);
+        JSONObject json = userFunction.uploadPictures(ba, tag_value);
 
         return json;
 //        try {
@@ -70,7 +71,6 @@ public class PictureUploadTask extends AsyncTask<Void, Void, JSONObject> {
 //        } catch (Exception e) {
 //            Log.v("log_tag", "Error in http connection " + e.toString());
 //        }
-
 
     }
 
