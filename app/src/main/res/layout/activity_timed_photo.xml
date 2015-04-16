@@ -33,6 +33,15 @@
         android:layout_marginStart="40dp"
         android:contentDescription="@string/button_description_msg" />
 
+    // timer
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:paddingRight="10dip"
+        android:textSize="50dp" />
 
     <ImageButton
         android:layout_width="wrap_content"
