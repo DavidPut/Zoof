@@ -24,9 +24,6 @@ public class UserFunctions {
     private String TAG_PHONE = "save_phone";
 
 
-    //random
-    private String TAG_RANDOM = "picture_random";
-
     // constructor
     public UserFunctions(){
         jsonParser = new JSONParser();
@@ -62,17 +59,6 @@ public class UserFunctions {
         ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("tag", TAG_PHONE));
         params.add(new BasicNameValuePair("id", id));
-        JSONObject json = jsonParser.getJSONFromUrl(URL, params);
-
-        return json;
-    }
-
-    public JSONObject randomPicture(String id, String search_tag){
-        // Building Parameters
-        ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("tag", TAG_RANDOM));
-        params.add(new BasicNameValuePair("id", id));
-        params.add(new BasicNameValuePair("search_tag", search_tag));
         JSONObject json = jsonParser.getJSONFromUrl(URL, params);
 
         return json;

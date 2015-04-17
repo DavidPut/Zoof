@@ -9,13 +9,11 @@ import library.UserFunctions;
 public class RandomPictureTask extends AsyncTask<Void, Void, JSONObject> {
 
     private String phone_id;
-    private String search_tag;
 
 
-    public RandomPictureTask(String id, String tag)
+    public RandomPictureTask(String id)
     {
         phone_id = id;
-        search_tag = tag;
     }
 
     protected void onPreExecute() {
@@ -26,7 +24,8 @@ public class RandomPictureTask extends AsyncTask<Void, Void, JSONObject> {
     protected JSONObject doInBackground(Void... params) {
 
         UserFunctions userFunction = new UserFunctions();
-        JSONObject json = userFunction.randomPicture(phone_id, search_tag);
+        JSONObject json = userFunction.savePhone(phone_id);
+
         return json;
 
     }
