@@ -1,100 +1,228 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:id="@+id/main">
+    android:id="@+id/main"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.3333333333">
+            <ImageView  android:id="@+id/popular1"
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:background="#ff07380e"
+                android:layout_alignParentTop="true"
+                android:clickable="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.3333333333">
+            <ImageView  android:id="@+id/popular2"
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:background="#383737"
+                android:clickable="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.333333333333">
+            <ImageView  android:id="@+id/popular3"
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:background="#AA113700"
+                android:clickable="true"
+                android:layout_alignParentTop="true" />
+        </RelativeLayout>
+    </LinearLayout>
 
 
-    <ImageView  android:id="@+id/popular1"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:background="#ff07380e"
-        android:layout_alignParentTop="true"
-        android:clickable="true"/>
-    <ImageView  android:id="@+id/popular2"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_toRightOf="@+id/popular1"
-        android:background="#383737"
-        android:clickable="true"/>
-    <ImageView  android:id="@+id/popular3"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_toRightOf="@+id/popular2"
-        android:background="#AA113700"
-        android:clickable="true" />
 
-    <ImageView  android:id="@+id/popular4"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_below="@+id/popular1"
-        android:background="#FF113700"
-        android:clickable="true"/>
-    <ImageView  android:id="@+id/popular5"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_toRightOf="@+id/popular4"
-        android:layout_below="@+id/popular2"
-        android:background="#61F1AA00"
-        android:clickable="true"/>
-    <ImageView  android:id="@+id/popular6"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_toRightOf="@+id/popular5"
-        android:layout_below="@+id/popular3"
-        android:background="#FF3700"
-        android:clickable="true"/>
 
-    <ImageView  android:id="@+id/popular7"
-    android:layout_width="120dp"
-    android:layout_height="120dp"
-    android:layout_below="@+id/popular4"
-    android:background="#AD1137"
-    android:clickable="true"/>
-    <ImageView  android:id="@+id/popular8"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_toRightOf="@+id/popular7"
-        android:layout_below="@+id/popular5"
-        android:background="#11AA00"
-        android:clickable="true"/>
-    <ImageView  android:id="@+id/popular9"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_toRightOf="@+id/popular8"
-        android:layout_below="@+id/popular6"
-        android:background="#00FFA0"
-        android:clickable="true"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.333333333333">
 
-    <TextView  android:id="@+id/timer"
-        android:layout_width="360dp"
-        android:layout_height="100dp"
-        android:layout_below="@+id/popular9"
-        android:background="#03982D"
-        android:clickable="true"
-        android:layout_toRightOf="@+id/imageButton"
-        android:layout_toEndOf="@+id/imageButton"
-        android:textSize="40sp"
-        android:textColor="#FFFFFF"
-        android:gravity="center"
-        android:autoText="false" />
+            <ImageView  android:id="@+id/popular4"
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
 
-      <Button
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:scaleType="fitCenter"
-        android:id="@+id/button"
-        android:background="#E53232"
-        android:textColor="#FFFFFF"
-        android:contentDescription="@string/button_camera_desc"
-        android:layout_toRightOf="@+id/popular7"
-        android:drawableLeft="@drawable/ic_action_camera"
-        android:drawableStart="@drawable/ic_action_camera"
-        android:text="@string/button_camera_txt"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/button_profile"
-        android:layout_below="@+id/timer"
-        android:layout_toLeftOf="@+id/button_profile" />
+                android:background="#FF113700"
+                android:clickable="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.333333333333">
+            <ImageView  android:id="@+id/popular5"
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:background="#61F1AA00"
+                android:clickable="true"    />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.333333333333">
+            <ImageView  android:id="@+id/popular6"
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:background="#FF3700"
+                android:clickable="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+     </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.333333333333">
+
+            <ImageView  android:id="@+id/popular7"
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:background="#AD1137"
+                android:clickable="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.333333333333">
+
+            <ImageView  android:id="@+id/popular8"
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:background="#11AA00"
+                android:clickable="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.333333333333">
+
+            <ImageView  android:id="@+id/popular9"
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:background="#00FFA0"
+                android:clickable="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.40">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.40">
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/wipe"
+                    android:src="@drawable/ic_action_discard"
+                    android:background="#03982D"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.60">
+
+
+            <TextView  android:id="@+id/timer"
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:background="#03982D"
+                android:clickable="true"
+                android:textSize="40sp"
+                android:textColor="#FFFFFF" />
+        </RelativeLayout>
+
+
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.60">
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33">
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:id="@+id/button"
+                android:background="#E53232"
+                android:textColor="#FFFFFF"
+                android:contentDescription="@string/button_camera_desc"
+                android:drawableLeft="@drawable/ic_action_camera"
+                android:drawableStart="@drawable/ic_action_camera"
+                android:text="@string/button_camera_txt"
+                android:layout_alignParentBottom="true"
+               />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+
 
     <Button
         android:layout_width="120dp"
@@ -135,18 +263,7 @@
         android:background="#E53232"
         android:layout_toLeftOf="@+id/button" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/wipe"
-        android:src="@drawable/ic_action_discard"
-        android:background="#03982D"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/timer"
-        android:layout_toStartOf="@+id/timer"
-        android:layout_alignTop="@+id/timer"
-        android:layout_above="@+id/button" />
 
 
-</RelativeLayout>
+
+</LinearLayout>
