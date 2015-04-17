@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -90,7 +91,7 @@ public class MainActivity extends ActionBarActivity {
         //Run task
         myTask.execute();
 
-        RelativeLayout relative = (RelativeLayout)findViewById(R.id.main);
+        LinearLayout linear = (LinearLayout)findViewById(R.id.main);
         //Full json result
         try {
           jobj = myTask.get();
@@ -118,7 +119,7 @@ public class MainActivity extends ActionBarActivity {
               valueLikes.setText(likes);
               valueLikes.setId(i);
 
-              relative.addView(valueLikes);
+              linear.addView(valueLikes);
 
             }
 
