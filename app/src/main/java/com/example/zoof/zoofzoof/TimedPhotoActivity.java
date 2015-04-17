@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import AsyncTasks.RandomPictureTask;
+
 
 public class TimedPhotoActivity extends ActionBarActivity {
 
@@ -30,12 +32,16 @@ public class TimedPhotoActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timed_photo);
 
-        //Get random info
-        
 
         //Get filter tag
         Intent intent = getIntent();
         String tag = intent.getStringExtra("tag");
+
+        //Get phone_id
+        String phone_id = intent.getStringExtra("id");
+
+        //Get random info
+        new RandomPictureTask(phone_id,tag ).execute();
 
         //Set actionbar title to filtered tag
         getSupportActionBar().setTitle(tag);

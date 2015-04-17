@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -49,7 +50,7 @@ public class MainActivity extends ActionBarActivity {
     private final long startTime = 86400000;
 
     private final long interval = 1 * 1000;
-
+    String phone_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         //Unique hardware id
-        String phone_id = Settings.Secure.getString(this.getContentResolver(),
+        phone_id = Settings.Secure.getString(this.getContentResolver(),
                 Settings.Secure.ANDROID_ID);
 
         //Save unique hardware id
@@ -90,7 +91,7 @@ public class MainActivity extends ActionBarActivity {
         //Run task
         myTask.execute();
 
-        RelativeLayout relative = (RelativeLayout)findViewById(R.id.main);
+        LinearLayout linear = (LinearLayout)findViewById(R.id.main);
         //Full json result
         try {
           jobj = myTask.get();
@@ -118,7 +119,7 @@ public class MainActivity extends ActionBarActivity {
               valueLikes.setText(likes);
               valueLikes.setId(i);
 
-              relative.addView(valueLikes);
+              linear.addView(valueLikes);
 
             }
 
@@ -142,6 +143,8 @@ public class MainActivity extends ActionBarActivity {
 
             Intent i=new Intent(this,TimedPhotoActivity.class);
             i.putExtra("tag", query);
+            i.putExtra("id", phone_id);
+
             startActivity(i);
         }
     }
