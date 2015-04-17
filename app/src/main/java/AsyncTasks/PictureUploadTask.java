@@ -29,13 +29,11 @@ import library.UserFunctions;
  */
 public class PictureUploadTask extends AsyncTask<Void, Void, JSONObject> {
 
-    public static String URL = "http://zoofzoof.nl/api";
     private String ba;
     private CameraActivity activity;
     private ProgressDialog pd;
-    private String TAG_UPLOAD = "upload_picture";
     private String tag_value;
-//
+
 
 
     public PictureUploadTask(String ba1, CameraActivity activity, String value)
@@ -60,17 +58,7 @@ public class PictureUploadTask extends AsyncTask<Void, Void, JSONObject> {
         JSONObject json = userFunction.uploadPictures(ba, tag_value);
 
         return json;
-//        try {
-//            HttpClient httpclient = new DefaultHttpClient();
-//            HttpPost httppost = new HttpPost(URL);
-//            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-//            HttpResponse response = httpclient.execute(httppost);
-//            String st = EntityUtils.toString(response.getEntity());
-//            Log.v("log_tag", "In the try Loop" + st);
-//
-//        } catch (Exception e) {
-//            Log.v("log_tag", "Error in http connection " + e.toString());
-//        }
+
 
     }
 

@@ -20,6 +20,8 @@ public class UserFunctions {
     //pictures upload
     private String TAG_UPLOAD = "upload_picture";
 
+    //save phone
+    private String TAG_PHONE = "save_phone";
 
 
     // constructor
@@ -52,17 +54,16 @@ public class UserFunctions {
         return json;
     }
 
-//    public JSONObject addPicture(String tag, Integer likes){
-//        // Building Parameters
-//        List<NameValuePair> params = new ArrayList<NameValuePair>();
-//        params.add(new BasicNameValuePair("tag", tag_pictures_post));
-//        params.add(new BasicNameValuePair("tag", tag));
-//        params.add(new BasicNameValuePair("likes", likes));
-//
-//        // getting JSON Object
-//        JSONObject json = jsonParser.getJSONFromUrl(URL, params);
-//        // return json
-//        return json;
-//    }
+    public JSONObject savePhone(String id){
+        // Building Parameters
+        ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", TAG_PHONE));
+        params.add(new BasicNameValuePair("id", id));
+        JSONObject json = jsonParser.getJSONFromUrl(URL, params);
+
+        return json;
+    }
+
+
 
 }

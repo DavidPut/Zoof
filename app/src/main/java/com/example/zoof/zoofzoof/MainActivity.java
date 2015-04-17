@@ -6,6 +6,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
+import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
@@ -26,6 +27,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 import AsyncTasks.LoadPicturesTask;
+import AsyncTasks.PhoneSaveTask;
 import AsyncTasks.PictureGetTask;
 
 
@@ -40,7 +42,6 @@ public class MainActivity extends ActionBarActivity {
 
     Button btn_camera;
 
-
     //Timer
     private CountDownTimer countDownTimer;
     private boolean timerHasStarted = false;
@@ -54,6 +55,15 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Unique hardware id
+        String phone_id = Settings.Secure.getString(this.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+
+        Log.e("Android","Android ID : "+phone_id);
+
+        //Save unique hardware id
+        new PhoneSaveTask(phone_id).execute();
 
         //Timer
         text = (TextView) this.findViewById(R.id.timer);
