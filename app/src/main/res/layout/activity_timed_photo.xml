@@ -6,55 +6,97 @@
 
     <ImageView
         android:id="@+id/Picture"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:contentDescription="@string/camera_description" />
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:contentDescription="@string/camera_description"
+        android:background="#dd2882"/>
 
-    <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/button_message"-->
-        <!--android:id="@+id/button_message"-->
-        <!--android:layout_alignTop="@+id/button_like"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_marginLeft="40dp"-->
-        <!--android:layout_marginStart="40dp"/>-->
 
     <ImageButton
         android:id="@+id/button_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
         android:src="@drawable/ic_action_chat"
         android:layout_alignTop="@+id/button_like"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
         android:contentDescription="@string/button_description_msg" />
 
     // timer
     <TextView
         android:id="@+id/timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:paddingRight="10dip"
-        android:textSize="50dp" />
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:paddingRight="10dp"
+        android:paddingTop="2dp"
+        android:textSize="40dp"
+        android:layout_alignBottom="@+id/button_like"
+        android:layout_centerHorizontal="true"/>
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
         android:text="@string/button_like"
         android:id="@+id/button_like"
         android:layout_below="@+id/Picture"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="40dp"
-        android:layout_marginEnd="40dp"
         android:src="@drawable/ic_action_important"
         android:contentDescription="@string/button_description_like" />
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:id="@+id/button"
+        android:background="#E53232"
+        android:textColor="#FFFFFF"
+        android:contentDescription="@string/button_camera_desc"
+        android:layout_toRightOf="@+id/popular7"
+        android:drawableLeft="@drawable/ic_action_camera"
+        android:drawableStart="@drawable/ic_action_camera"
+        android:text="@string/button_camera_txt"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/button_profile"
+        android:layout_below="@+id/timer"
+        android:layout_toLeftOf="@+id/button_profile" />
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_action_person"
+        android:drawableLeft="@drawable/ic_action_person"
+        android:text="@string/button_profile_txt"
+        android:scaleType="fitCenter"
+        android:id="@+id/button_profile"
+        android:background="#E53232"
+        android:textColor="#FFFFFF"
+        android:contentDescription="@string/button_profile_desc"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/timer" />
+
+    <Button
+        android:text="@string/button_random_txt"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:textColor="#FFFFFF"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/button_random_desc"
+        android:drawableLeft="@drawable/ic_action_warning"
+        android:drawableStart="@drawable/ic_action_warning"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/button"
+        android:src="@drawable/ic_action_warning"
+        android:layout_below="@+id/timer"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:background="#E53232"
+        android:layout_toLeftOf="@+id/button" />
 
 
 </RelativeLayout>

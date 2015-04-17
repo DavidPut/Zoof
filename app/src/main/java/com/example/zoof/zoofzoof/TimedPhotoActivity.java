@@ -1,11 +1,16 @@
 package com.example.zoof.zoofzoof;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -14,8 +19,11 @@ public class TimedPhotoActivity extends ActionBarActivity {
     private CountDownTimer countDownTimer;
     private boolean timerHasStarted = false;
     public TextView text;
-    private final long startTime = 30 * 1000;
+    private final long startTime = 10 * 1000;
     private final long interval = 1 * 1000;
+    Button btn_camera;
+    private ImageView imageView;
+    Bitmap photo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,31 @@ public class TimedPhotoActivity extends ActionBarActivity {
 
         countDownTimer.start();
         timerHasStarted = true;
+
+        btn_camera = (Button) findViewById(R.id.button);
+        btn_camera.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                //Start camera on startup
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, 100);
+
+            }
+
+        });
+    }
+
+    //Show picture in imageview
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.e("test", "komt erin bij foto");
+        if (requestCode == 100 && resultCode == RESULT_OK ) {
+            photo = (Bitmap) data.getExtras().get("data");
+            imageView.setImageBitmap(photo);
+        }
+        else {
+            Log.e("test", "terug");
+        }
     }
 
 
@@ -69,7 +102,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
 
         @Override
         public void onFinish() {
-            text.setText("Time's up!");
+            text.setText("next");
         }
 
         @Override
