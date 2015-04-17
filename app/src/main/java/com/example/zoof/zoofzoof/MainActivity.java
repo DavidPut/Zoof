@@ -60,8 +60,6 @@ public class MainActivity extends ActionBarActivity {
         String phone_id = Settings.Secure.getString(this.getContentResolver(),
                 Settings.Secure.ANDROID_ID);
 
-        Log.e("Android","Android ID : "+phone_id);
-
         //Save unique hardware id
         new PhoneSaveTask(phone_id).execute();
 

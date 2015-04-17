@@ -30,6 +30,9 @@ public class TimedPhotoActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timed_photo);
 
+        //Get random info
+        
+
         //Get filter tag
         Intent intent = getIntent();
         String tag = intent.getStringExtra("tag");
