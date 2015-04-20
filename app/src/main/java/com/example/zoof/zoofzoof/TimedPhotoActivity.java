@@ -13,6 +13,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
+
+import AsyncTasks.LoadPicturesTask;
 import AsyncTasks.RandomPictureTask;
 
 
@@ -26,6 +33,10 @@ public class TimedPhotoActivity extends ActionBarActivity {
     Button btn_camera;
     private ImageView imageView;
     Bitmap photo;
+    private String phone_id;
+    private String tag;
+    private JSONObject jobj;
+    private static final String TAG_URL = "url";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +52,30 @@ public class TimedPhotoActivity extends ActionBarActivity {
         String phone_id = intent.getStringExtra("id");
 
         //Get random info
-        new RandomPictureTask(phone_id,tag ).execute();
+        new RandomPictureTask(phone_id,tag).execute();
 
         //Set actionbar title to filtered tag
         getSupportActionBar().setTitle(tag);
+
+        //Get task
+        RandomPictureTask myTask = new RandomPictureTask(phone_id, tag); //
+        //Run task
+        myTask.execute();
+
+        try {
+            JSONObject test = myTask.get();
+            try {
+                String url = test.getString(TAG_URL);
+                Log.e("EHEUHUEH", url);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
 
         //Timer
         setContentView(R.layout.activity_timed_photo);
@@ -67,6 +98,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
             }
 
         });
+
     }
 
     //Show picture in imageview
@@ -112,6 +144,20 @@ public class TimedPhotoActivity extends ActionBarActivity {
         @Override
         public void onFinish() {
             text.setText("next");
+//
+//
+//            try {
+//                jobj = myTask.get();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            } catch (ExecutionException e) {
+//                e.printStackTrace();
+//            }
+//
+//            //moet url krijgen
+//            new LoadPicturesTask((ImageView) findViewById(R.id.Picture)).execute();
+
+
         }
 
         @Override

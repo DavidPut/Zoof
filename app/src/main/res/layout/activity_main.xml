@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     tools:context=".MainActivity"
     android:id="@+id/main"
     android:orientation="vertical">
@@ -198,6 +198,7 @@
                                 android:layout_height="fill_parent"
                                 android:id="@+id/wipe"
                                 android:src="@drawable/ic_action_discard"
+                                android:scaleType="center"
                                 android:background="#03982D"/>
                         </RelativeLayout>
 
@@ -231,7 +232,8 @@
                         <RelativeLayout
                             android:layout_width="0dip"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.3333">
+                            android:layout_weight="0.33"
+                            android:background="#dd02bbdd">
 
                             <Button
                                 android:text="@string/button_random_txt"
@@ -252,7 +254,7 @@
                         <RelativeLayout
                             android:layout_width="0dip"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.3333">
+                            android:layout_weight="0.33">
 
                             <Button
                                 android:layout_width="fill_parent"
@@ -270,7 +272,7 @@
                         <RelativeLayout
                             android:layout_width="0dip"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.3333">
+                            android:layout_weight="0.33">
                             <Button
                                 android:layout_width="fill_parent"
                                 android:layout_height="fill_parent"

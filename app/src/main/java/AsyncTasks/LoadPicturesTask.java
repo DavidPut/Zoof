@@ -20,9 +20,6 @@ import java.net.URL;
 
 import library.UserFunctions;
 
-/**
- * Created by David on 14-4-2015.
- */
 public class LoadPicturesTask extends AsyncTask<String, Void, Bitmap> {
     ImageView bmImage;
 
