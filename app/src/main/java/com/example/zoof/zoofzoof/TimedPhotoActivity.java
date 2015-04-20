@@ -62,19 +62,23 @@ public class TimedPhotoActivity extends ActionBarActivity {
         //Run task
         myTask.execute();
 
+        JSONObject jresponse = null;
         try {
-            JSONObject test = myTask.get();
             try {
-                String url = test.getString(TAG_URL);
-                Log.e("EHEUHUEH", url);
+                jresponse = new JSONObject(String.valueOf(myTask.get()));
+                String responseString = jresponse.getString("url");
+                Log.e("HALLOOOO" , responseString);
+                new LoadPicturesTask((ImageView) findViewById(R.id.Picture)).execute("http://zoofzoof.nl/pictures/"+responseString);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+
 
 
         //Timer
