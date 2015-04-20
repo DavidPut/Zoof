@@ -103,8 +103,8 @@ public class MainActivity extends ActionBarActivity {
 
         try {
 
-        // Getting JSON Array
-        jarr = jobj.getJSONArray(TAG_PICTURES);
+                   // Getting JSON Array
+            jarr = jobj.getJSONArray(TAG_PICTURES);
 
             for(int i = 0 ; i < jarr.length(); i++) {
                 JSONObject c = jarr.getJSONObject(i);
@@ -115,11 +115,11 @@ public class MainActivity extends ActionBarActivity {
 
                 new LoadPicturesTask((ImageView) findViewById(popularIDs[i]))
                         .execute(url);
-              TextView valueLikes = new TextView(this);
-              valueLikes.setText(likes);
-              valueLikes.setId(i);
-
-              linear.addView(valueLikes);
+//              TextView valueLikes = new TextView(this);
+//              valueLikes.setText(likes);
+//              valueLikes.setId(i);
+//
+//              linear.addView(valueLikes);
 
             }
 

@@ -5,11 +5,12 @@
     tools:context=".TimedPhotoActivity">
 
     <ImageView
-        android:id="@+id/Picture"
+        android:id="@+id/main_image"
         android:layout_width="360dp"
         android:layout_height="360dp"
         android:contentDescription="@string/camera_description"
-        android:background="#dd2882"/>
+        android:background="#000000"
+        />
 
 
     <ImageButton
@@ -38,7 +39,7 @@
         android:layout_height="100dp"
         android:text="@string/button_like"
         android:id="@+id/button_like"
-        android:layout_below="@+id/Picture"
+        android:layout_below="@+id/main_image"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:src="@drawable/ic_action_important"

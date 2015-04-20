@@ -29,7 +29,7 @@ public class LoadPicturesTask extends AsyncTask<String, Void, Bitmap> {
 
         protected Bitmap doInBackground(String... urls) {
             String urldisplay = urls[0];
-            Log.e("test",urldisplay);
+            Log.e("Load:",urldisplay);
             Bitmap mIcon11 = null;
             try {
                 InputStream in = new URL(urldisplay).openStream();

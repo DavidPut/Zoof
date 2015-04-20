@@ -2,6 +2,7 @@ package com.example.zoof.zoofzoof;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
 import AsyncTasks.LoadPicturesTask;
@@ -37,6 +40,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
     private String tag;
     private JSONObject jobj;
     private static final String TAG_URL = "url";
+    private RandomPictureTask myTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,19 +50,19 @@ public class TimedPhotoActivity extends ActionBarActivity {
 
         //Get filter tag
         Intent intent = getIntent();
-        String tag = intent.getStringExtra("tag");
+        tag = intent.getStringExtra("tag");
 
         //Get phone_id
-        String phone_id = intent.getStringExtra("id");
-
-        //Get random info
-        new RandomPictureTask(phone_id,tag).execute();
+        phone_id = intent.getStringExtra("id");
+//
+//        //Get random info
+//        new RandomPictureTask(phone_id,tag).execute();
 
         //Set actionbar title to filtered tag
         getSupportActionBar().setTitle(tag);
 
         //Get task
-        RandomPictureTask myTask = new RandomPictureTask(phone_id, tag); //
+         myTask = new RandomPictureTask(phone_id, tag); //
         //Run task
         myTask.execute();
 
@@ -68,9 +72,17 @@ public class TimedPhotoActivity extends ActionBarActivity {
                 jresponse = new JSONObject(String.valueOf(myTask.get()));
                 String responseString = jresponse.getString("url");
                 Log.e("HALLOOOO" , responseString);
-                new LoadPicturesTask((ImageView) findViewById(R.id.Picture)).execute("http://zoofzoof.nl/pictures/"+responseString);
+                Log.e("DIT IS", "http://zoofzoof.nl/pictures/" + responseString );
+
+                ImageView image = (ImageView) findViewById(R.id.main_image);
+                LoadPicturesTask loadpictures = new LoadPicturesTask((image));
+                loadpictures.execute("http://zoofzoof.nl/pictures/" + responseString);
+
             } catch (JSONException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                ImageView image = (ImageView) findViewById(R.id.main_image);
+                LoadPicturesTask loadpictures = new LoadPicturesTask((image));
+                loadpictures.execute("http://2.bp.blogspot.com/-2HYczDyC2VA/ULUz8i4fDjI/AAAAAAAAADY/gV4zQDCbiMs/s1600/nomore.png");
             }
 
         } catch (InterruptedException e) {
@@ -82,7 +94,6 @@ public class TimedPhotoActivity extends ActionBarActivity {
 
 
         //Timer
-        setContentView(R.layout.activity_timed_photo);
         text = (TextView) this.findViewById(R.id.timer);
         countDownTimer = new MyCountDownTimer(startTime, interval);
         text.setText(text.getText() + String.valueOf(startTime / 1000));
@@ -148,18 +159,38 @@ public class TimedPhotoActivity extends ActionBarActivity {
         @Override
         public void onFinish() {
             text.setText("next");
-//
-//
-//            try {
-//                jobj = myTask.get();
-//            } catch (InterruptedException e) {
+
+
+            //Run task
+            myTask.execute();
+
+            JSONObject jresponse = null;
+            try {
+                try {
+                    jresponse = new JSONObject(String.valueOf(myTask.get()));
+                    String responseString = jresponse.getString("url");
+                    Log.e("HALLOOOO" , responseString);
+                    Log.e("DIT IS", "http://zoofzoof.nl/pictures/" + responseString );
+
+                    ImageView image = (ImageView) findViewById(R.id.main_image);
+                    LoadPicturesTask loadpictures = new LoadPicturesTask((image));
+                    loadpictures.execute("http://zoofzoof.nl/pictures/" + responseString);
+
+
+                } catch (JSONException e) {
 //                e.printStackTrace();
-//            } catch (ExecutionException e) {
-//                e.printStackTrace();
-//            }
-//
-//            //moet url krijgen
-//            new LoadPicturesTask((ImageView) findViewById(R.id.Picture)).execute();
+                    ImageView image = (ImageView) findViewById(R.id.main_image);
+                    LoadPicturesTask loadpictures = new LoadPicturesTask((image));
+                    loadpictures.execute("http://2.bp.blogspot.com/-2HYczDyC2VA/ULUz8i4fDjI/AAAAAAAAADY/gV4zQDCbiMs/s1600/nomore.png");
+                }
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+
+
 
 
         }

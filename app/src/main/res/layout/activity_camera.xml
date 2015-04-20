@@ -5,7 +5,7 @@
     tools:context=".CameraActivity">
 
     <ImageView
-        android:id="@+id/Picture"
+        android:id="@+id/main_image"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:contentDescription="@string/camera_description" />
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/tag_hint"
         android:inputType="text"
-        android:layout_below="@+id/Picture"
+        android:layout_below="@+id/main_image"
         android:layout_alignLeft="@+id/Button_upload"
         android:layout_alignStart="@+id/Button_upload"
         android:layout_alignRight="@+id/Button_upload"

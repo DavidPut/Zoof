@@ -33,7 +33,7 @@ public class CameraActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-        this.imageView = (ImageView)this.findViewById(R.id.Picture);
+        this.imageView = (ImageView)this.findViewById(R.id.main_image);
 
         //Edit tag
         tag   = (EditText)findViewById(R.id.tag);
