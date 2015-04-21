@@ -54,6 +54,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
 
         //Get phone_id
         phone_id = intent.getStringExtra("id");
+        Log.e("phone_Id" , phone_id);
 //
 //        //Get random info
 //        new RandomPictureTask(phone_id,tag).execute();
@@ -151,23 +152,26 @@ public class TimedPhotoActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public class MyCountDownTimer extends CountDownTimer {
-        public MyCountDownTimer(long startTime, long interval) {
+    public class MyCountDownTimer extends CountDownTimer
+    {
+
+        public MyCountDownTimer(long startTime, long interval)
+        {
             super(startTime, interval);
         }
 
         @Override
-        public void onFinish() {
-            text.setText("next");
-
-
+        public void onFinish()
+        {
+            text.setText(""+0);
+            RandomPictureTask myTaskAfterTimer = new RandomPictureTask(phone_id, tag); //
             //Run task
-            myTask.execute();
+            myTaskAfterTimer.execute();
 
             JSONObject jresponse = null;
             try {
                 try {
-                    jresponse = new JSONObject(String.valueOf(myTask.get()));
+                    jresponse = new JSONObject(String.valueOf(myTaskAfterTimer.get()));
                     String responseString = jresponse.getString("url");
                     Log.e("HALLOOOO" , responseString);
                     Log.e("DIT IS", "http://zoofzoof.nl/pictures/" + responseString );
