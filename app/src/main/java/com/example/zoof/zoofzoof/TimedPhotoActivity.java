@@ -55,6 +55,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
         //Get phone_id
         phone_id = intent.getStringExtra("id");
         Log.e("phone_Id" , phone_id);
+        Log.e("search_tag", tag);
 //
 //        //Get random info
 //        new RandomPictureTask(phone_id,tag).execute();
