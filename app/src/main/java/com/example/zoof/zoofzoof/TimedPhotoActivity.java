@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -176,9 +177,9 @@ public class TimedPhotoActivity extends ActionBarActivity {
                         //Restart timer
                         countDownTimer.cancel();
                         countDownTimer.start();
-
-                        startActivity(i);
                         finish();
+                        startActivity(i);
+
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -307,6 +308,16 @@ public class TimedPhotoActivity extends ActionBarActivity {
         public void onTick(long millisUntilFinished) {
             text.setText("" + millisUntilFinished / 1000);
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 
