@@ -12,9 +12,7 @@ import org.json.JSONObject;
 
 import library.UserFunctions;
 
-/**
- * Created by David on 14-4-2015.
- */
+
 public class PictureGetTask extends AsyncTask<String, Void, JSONObject> {
 
     private MainActivity activity;

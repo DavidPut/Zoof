@@ -26,6 +26,9 @@ public class UserFunctions {
     //random
     private String TAG_RANDOM = "picture_random";
 
+    //wipe
+    private String TAG_WIPE = "get_wipetime";
+
 
     // constructor
     public UserFunctions(){
@@ -78,6 +81,14 @@ public class UserFunctions {
         return json;
     }
 
+    public JSONObject wipeTime(){
+        // Building Parameters
+        ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", TAG_WIPE));
+        JSONObject json = jsonParser.getJSONFromUrl(URL, params);
+
+        return json;
+    }
 
 
 }
