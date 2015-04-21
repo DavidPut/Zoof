@@ -108,6 +108,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
             try {
                 jresponse = new JSONObject(String.valueOf(myTask.get()));
                 String responseString = jresponse.getString("url");
+             
 
 
                 pid1 = jresponse.getString("pid");
