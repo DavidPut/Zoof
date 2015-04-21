@@ -10,6 +10,7 @@ import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,7 +50,7 @@ public class MainActivity extends ActionBarActivity {
     private boolean timerHasStarted = false;
     public TextView text;
     //private final long startTime = 86400000; // dag
-    private final long startTime = 20000; //
+    private long startTime = 20000; //
 
     private final long interval = 1 * 1000;
     String phone_id;
@@ -58,6 +59,32 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        GetWipeTimeTask myTimeTask = new GetWipeTimeTask(); //
+        //Run task
+        myTimeTask.execute();
+
+        JSONObject jresponse = null;
+        try {
+            try {
+                jresponse = new JSONObject(String.valueOf(myTimeTask.get()));
+                String responseString = jresponse.getString("wipetime");
+                startTime = Long.parseLong(responseString);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
 
         //Unique hardware id
         phone_id = Settings.Secure.getString(this.getContentResolver(),
@@ -192,10 +219,6 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public void onFinish() {
-
-            GetWipeTimeTask myTimeTask = new GetWipeTimeTask(); //
-            //Run task
-            myTimeTask.execute();
 
             // refresh de screen (alle elementen naar de standaard kleur)
             for(int i = 0 ; i < 9; i++) {

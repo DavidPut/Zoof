@@ -26,14 +26,10 @@ public class UserFunctions {
     //random
     private String TAG_RANDOM = "picture_random";
 
-<<<<<<< HEAD
     //like
     private String TAG_LIKE = "picture_like";
-=======
     //wipe
     private String TAG_WIPE = "get_wipetime";
-
->>>>>>> origin/master
 
     // constructor
     public UserFunctions(){
