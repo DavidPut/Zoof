@@ -1,103 +1,207 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".TimedPhotoActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    tools:context=".TimedPhotoActivity"
+    android:id="@+id/main"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/main_image"
-        android:layout_width="360dp"
-        android:layout_height="360dp"
-        android:contentDescription="@string/camera_description"
-        android:background="#000000"
-        />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="0.7">
 
-    <ImageButton
-        android:id="@+id/button_message"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_action_chat"
-        android:layout_alignTop="@+id/button_like"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:contentDescription="@string/button_description_msg" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
 
-    // timer
-    <TextView
-        android:id="@+id/timer"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:paddingRight="10dp"
-        android:paddingTop="2dp"
-        android:textSize="40dp"
-        android:layout_alignBottom="@+id/button_like"
-        android:layout_centerHorizontal="true"/>
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="0.33">
 
-    <ImageButton
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:text="@string/button_like"
-        android:id="@+id/button_like"
-        android:layout_below="@+id/main_image"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/ic_action_important"
-        android:contentDescription="@string/button_description_like" />
-
-    <Button
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:scaleType="fitCenter"
-        android:id="@+id/button"
-        android:background="#E53232"
-        android:textColor="#FFFFFF"
-        android:contentDescription="@string/button_camera_desc"
-        android:layout_toRightOf="@+id/popular7"
-        android:drawableLeft="@drawable/ic_action_camera"
-        android:drawableStart="@drawable/ic_action_camera"
-        android:text="@string/button_camera_txt"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/button_profile"
-        android:layout_below="@+id/timer"
-        android:layout_toLeftOf="@+id/button_profile" />
-
-    <Button
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_action_person"
-        android:drawableLeft="@drawable/ic_action_person"
-        android:text="@string/button_profile_txt"
-        android:scaleType="fitCenter"
-        android:id="@+id/button_profile"
-        android:background="#E53232"
-        android:textColor="#FFFFFF"
-        android:contentDescription="@string/button_profile_desc"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/timer" />
-
-    <Button
-        android:text="@string/button_random_txt"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
-        android:textColor="#FFFFFF"
-        android:scaleType="fitCenter"
-        android:contentDescription="@string/button_random_desc"
-        android:drawableLeft="@drawable/ic_action_warning"
-        android:drawableStart="@drawable/ic_action_warning"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/button"
-        android:src="@drawable/ic_action_warning"
-        android:layout_below="@+id/timer"
-        android:adjustViewBounds="false"
-        android:cropToPadding="false"
-        android:background="#E53232"
-        android:layout_toLeftOf="@+id/button" />
+                    <!--Rij 1-->
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
 
-</RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="0.33">
+                            <ImageView  android:id="@+id/main_image"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="#000000"
+                                android:clickable="true" />
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="0.3">
+
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dip"
+                    android:layout_weight="0.7">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.333">
+
+                            <ImageButton
+                                android:id="@+id/button_message"
+                                android:layout_width="120dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/ic_action_chat"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:contentDescription="@string/button_description_msg" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.333">
+
+                            // timer
+                            <TextView
+                                android:id="@+id/timer"
+                                android:layout_width="120dp"
+                                android:layout_height="100dp"
+                                android:paddingRight="10dp"
+                                android:paddingTop="2dp"
+                                android:textSize="40dp"
+                                android:layout_centerHorizontal="true"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.333">
+
+                            <ImageButton
+                                android:layout_width="120dp"
+                                android:layout_height="100dp"
+                                android:text="@string/button_like"
+                                android:id="@+id/button_like"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentEnd="true"
+                                android:src="@drawable/ic_action_important"
+                                android:contentDescription="@string/button_description_like" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dip"
+                    android:layout_weight="0.3">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.33"
+                            android:background="#dd02bbdd">
+
+                            <Button
+                                android:text="@string/button_random_txt"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:id="@+id/imageButton"
+                                android:textColor="#FFFFFF"
+                                android:scaleType="fitCenter"
+                                android:contentDescription="@string/button_random_desc"
+                                android:drawableLeft="@drawable/ic_action_warning"
+                                android:drawableStart="@drawable/ic_action_warning"
+                                android:src="@drawable/ic_action_warning"
+                                android:adjustViewBounds="false"
+                                android:cropToPadding="false"
+                                android:background="#E53232"/>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.33">
+
+                            <Button
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:scaleType="fitCenter"
+                                android:id="@+id/button"
+                                android:background="#E53232"
+                                android:textColor="#FFFFFF"
+                                android:contentDescription="@string/button_camera_desc"
+                                android:drawableLeft="@drawable/ic_action_camera"
+                                android:drawableStart="@drawable/ic_action_camera"
+                                android:text="@string/button_camera_txt"/>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.33">
+                            <Button
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:drawableStart="@drawable/ic_action_person"
+                                android:drawableLeft="@drawable/ic_action_person"
+                                android:text="@string/button_profile_txt"
+                                android:scaleType="fitCenter"
+                                android:id="@+id/button_profile"
+                                android:background="#E53232"
+                                android:textColor="#FFFFFF"
+                                android:contentDescription="@string/button_profile_desc"/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

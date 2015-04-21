@@ -26,6 +26,8 @@ public class UserFunctions {
     //random
     private String TAG_RANDOM = "picture_random";
 
+    //like
+    private String TAG_LIKE = "picture_like";
 
     // constructor
     public UserFunctions(){
@@ -73,6 +75,17 @@ public class UserFunctions {
         params.add(new BasicNameValuePair("tag", TAG_RANDOM));
         params.add(new BasicNameValuePair("id", id));
         params.add(new BasicNameValuePair("search_tag", search_tag));
+        JSONObject json = jsonParser.getJSONFromUrl(URL, params);
+
+        return json;
+    }
+
+
+    public JSONObject saveLike(String pid){
+        // Building Parameters
+        ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", TAG_LIKE));
+        params.add(new BasicNameValuePair("pid", pid));
         JSONObject json = jsonParser.getJSONFromUrl(URL, params);
 
         return json;

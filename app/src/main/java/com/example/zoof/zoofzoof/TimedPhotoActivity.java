@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,6 +35,8 @@ public class TimedPhotoActivity extends ActionBarActivity {
     private final long startTime = 10 * 1000;
     private final long interval = 1 * 1000;
     Button btn_camera;
+    ImageButton btn_message;
+    ImageButton btn_like;
     private ImageView imageView;
     Bitmap photo;
     private String phone_id;
@@ -64,9 +67,36 @@ public class TimedPhotoActivity extends ActionBarActivity {
         getSupportActionBar().setTitle(tag);
 
         //Get task
-         myTask = new RandomPictureTask(phone_id, tag); //
+        myTask = new RandomPictureTask(phone_id, tag); //
         //Run task
         myTask.execute();
+
+        //Buttons
+        btn_camera = (Button) findViewById(R.id.button);
+        btn_camera.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                //Start camera on startup
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, 100);
+
+            }
+
+        });
+
+        btn_message = (ImageButton) findViewById(R.id.button_message);
+        btn_like = (ImageButton) findViewById(R.id.button_like);
+
+        btn_like.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                //add like
+
+            }
+
+        });
 
         JSONObject jresponse = null;
         try {
@@ -79,12 +109,17 @@ public class TimedPhotoActivity extends ActionBarActivity {
                 ImageView image = (ImageView) findViewById(R.id.main_image);
                 LoadPicturesTask loadpictures = new LoadPicturesTask((image));
                 loadpictures.execute("http://zoofzoof.nl/pictures/" + responseString);
+                btn_message.setVisibility(View.VISIBLE);
+                btn_like.setVisibility(View.VISIBLE);
 
             } catch (JSONException e) {
 //                e.printStackTrace();
                 ImageView image = (ImageView) findViewById(R.id.main_image);
                 LoadPicturesTask loadpictures = new LoadPicturesTask((image));
                 loadpictures.execute("http://2.bp.blogspot.com/-2HYczDyC2VA/ULUz8i4fDjI/AAAAAAAAADY/gV4zQDCbiMs/s1600/nomore.png");
+                btn_message.setVisibility(View.INVISIBLE);
+                btn_like.setVisibility(View.INVISIBLE);
+
             }
 
         } catch (InterruptedException e) {
@@ -103,18 +138,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
         countDownTimer.start();
         timerHasStarted = true;
 
-        btn_camera = (Button) findViewById(R.id.button);
-        btn_camera.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
-                //Start camera on startup
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, 100);
-
-            }
-
-        });
 
     }
 
@@ -180,6 +204,9 @@ public class TimedPhotoActivity extends ActionBarActivity {
                     ImageView image = (ImageView) findViewById(R.id.main_image);
                     LoadPicturesTask loadpictures = new LoadPicturesTask((image));
                     loadpictures.execute("http://zoofzoof.nl/pictures/" + responseString);
+                    btn_message.setVisibility(View.VISIBLE);
+                    btn_like.setVisibility(View.VISIBLE);
+
 
 
                 } catch (JSONException e) {
@@ -187,6 +214,9 @@ public class TimedPhotoActivity extends ActionBarActivity {
                     ImageView image = (ImageView) findViewById(R.id.main_image);
                     LoadPicturesTask loadpictures = new LoadPicturesTask((image));
                     loadpictures.execute("http://2.bp.blogspot.com/-2HYczDyC2VA/ULUz8i4fDjI/AAAAAAAAADY/gV4zQDCbiMs/s1600/nomore.png");
+                    btn_message.setVisibility(View.INVISIBLE);
+                    btn_like.setVisibility(View.INVISIBLE);
+
                 }
 
             } catch (InterruptedException e) {
