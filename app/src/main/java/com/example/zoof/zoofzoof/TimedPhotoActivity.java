@@ -55,7 +55,6 @@ public class TimedPhotoActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timed_photo);
 
-
         //Get filter tag
         Intent intent = getIntent();
         tag = intent.getStringExtra("tag");
@@ -72,7 +71,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
         getSupportActionBar().setTitle(tag);
 
         //Get task
-        myTask = new RandomPictureTask(phone_id, tag); //
+        myTask = new RandomPictureTask(phone_id, tag);
         //Run task
         myTask.execute();
 
@@ -94,6 +93,14 @@ public class TimedPhotoActivity extends ActionBarActivity {
         btn_like = (ImageButton) findViewById(R.id.button_like);
 
 
+        //Timer
+        text = (TextView) this.findViewById(R.id.timer);
+        countDownTimer = new MyCountDownTimer(startTime, interval);
+        text.setText(text.getText() + String.valueOf(startTime / 1000));
+
+
+        countDownTimer.start();
+        timerHasStarted = true;
 
         JSONObject jresponse = null;
         try {
@@ -130,6 +137,10 @@ public class TimedPhotoActivity extends ActionBarActivity {
                 btn_message.setVisibility(View.INVISIBLE);
                 btn_like.setVisibility(View.INVISIBLE);
 
+                //Empty timer
+                countDownTimer.cancel();
+                text.setText("");
+
             }
 
         } catch (InterruptedException e) {
@@ -140,14 +151,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
 
 
 
-        //Timer
-        text = (TextView) this.findViewById(R.id.timer);
-        countDownTimer = new MyCountDownTimer(startTime, interval);
-        text.setText(text.getText() + String.valueOf(startTime / 1000));
 
-
-        countDownTimer.start();
-        timerHasStarted = true;
 
         //Discover
         btn_discover = (Button) findViewById(R.id.imageButton);
@@ -168,9 +172,13 @@ public class TimedPhotoActivity extends ActionBarActivity {
                         Intent i= new Intent(TimedPhotoActivity.this, TimedPhotoActivity.class);
                         i.putExtra("tag", discoverTag);
                         i.putExtra("id",phone_id );
+
+                        //Restart timer
+                        countDownTimer.cancel();
+                        countDownTimer.start();
+
                         startActivity(i);
                         finish();
-
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -269,6 +277,10 @@ public class TimedPhotoActivity extends ActionBarActivity {
                     btn_message.setVisibility(View.VISIBLE);
                     btn_like.setVisibility(View.VISIBLE);
 
+                    //Restart timer
+                    countDownTimer.cancel();
+                    countDownTimer.start();
+
 
 
                 } catch (JSONException e) {
@@ -279,6 +291,8 @@ public class TimedPhotoActivity extends ActionBarActivity {
                     btn_message.setVisibility(View.INVISIBLE);
                     btn_like.setVisibility(View.INVISIBLE);
 
+                    //Empty timer
+                    text.setText("");
                 }
 
             } catch (InterruptedException e) {
@@ -286,9 +300,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
-            //Restart timer
-            countDownTimer.cancel();
-            countDownTimer.start();
+
         }
 
         @Override

@@ -33,15 +33,17 @@ public class PictureUploadTask extends AsyncTask<Void, Void, JSONObject> {
     private CameraActivity activity;
     private ProgressDialog pd;
     private String tag_value;
+    private String phone_id;
 
 
 
-    public PictureUploadTask(String ba1, CameraActivity activity, String value)
+    public PictureUploadTask(String ba1, CameraActivity activity, String value, String id)
     {
        ba = ba1;
        this.activity = activity;
        pd = new ProgressDialog(activity);
        tag_value = value;
+       phone_id = id;
     }
 
     protected void onPreExecute() {
@@ -55,7 +57,7 @@ public class PictureUploadTask extends AsyncTask<Void, Void, JSONObject> {
     protected JSONObject doInBackground(Void... params) {
 
         UserFunctions userFunction = new UserFunctions();
-        JSONObject json = userFunction.uploadPictures(ba, tag_value);
+        JSONObject json = userFunction.uploadPictures(ba, tag_value, phone_id);
 
         return json;
 

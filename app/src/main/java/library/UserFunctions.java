@@ -56,12 +56,13 @@ public class UserFunctions {
         return json;
     }
 
-    public JSONObject uploadPictures(String ba, String value){
+    public JSONObject uploadPictures(String ba, String value, String id){
         // Building Parameters
         ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("tag", TAG_UPLOAD));
         params.add(new BasicNameValuePair("base64", ba));
         params.add(new BasicNameValuePair("tag_value", value));
+        params.add(new BasicNameValuePair("id", id));
         JSONObject json = jsonParser.getJSONFromUrl(URL, params);
 
         return json;

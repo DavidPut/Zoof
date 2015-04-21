@@ -1,6 +1,7 @@
 package com.example.zoof.zoofzoof;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +29,7 @@ public class CameraActivity extends ActionBarActivity {
     String ba1;
     EditText tag;
     String tag_value;
+    String phone_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,8 +102,12 @@ public class CameraActivity extends ActionBarActivity {
         Log.v("EditText", tag.getText().toString());
         tag_value = tag.getText().toString();
 
+        //Unique hardware id
+        phone_id = Settings.Secure.getString(this.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+
         // Upload image to server
-        new PictureUploadTask(ba1, this, tag_value).execute();
+        new PictureUploadTask(ba1, this, tag_value, phone_id).execute();
     }
 
 

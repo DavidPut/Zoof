@@ -213,6 +213,7 @@
                                 android:background="#03982D"
                                 android:clickable="true"
                                 android:textSize="40sp"
+                                android:gravity="center"
                                 android:textColor="#FFFFFF" />
                         </RelativeLayout>
 

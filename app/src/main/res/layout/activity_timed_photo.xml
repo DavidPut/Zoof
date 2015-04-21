@@ -104,6 +104,7 @@
                                 android:paddingRight="10dp"
                                 android:paddingTop="2dp"
                                 android:textSize="40dp"
+                                android:gravity="center"
                                 android:layout_centerHorizontal="true"/>
 
                         </RelativeLayout>
