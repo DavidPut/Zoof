@@ -27,6 +27,7 @@ import org.json.JSONObject;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
+import AsyncTasks.DiscoverTagTask;
 import AsyncTasks.GetWipeTimeTask;
 import AsyncTasks.LoadPicturesTask;
 import AsyncTasks.PhoneSaveTask;
@@ -43,6 +44,7 @@ public class MainActivity extends ActionBarActivity {
     private int []popularIDs = new int[] {R.id.popular1, R.id.popular2, R.id.popular3, R.id.popular4, R.id.popular5, R.id.popular6, R.id.popular7, R.id.popular8, R.id.popular9};
 
     Button btn_camera;
+    Button btn_discover;
 
     //Timer
     private CountDownTimer countDownTimer;
@@ -77,6 +79,8 @@ public class MainActivity extends ActionBarActivity {
         //Search
         handleIntent(getIntent());
 
+
+        //Camera
         btn_camera = (Button) findViewById(R.id.button);
         btn_camera.setOnClickListener(new View.OnClickListener() {
 
@@ -84,9 +88,48 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CameraActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        //Discover
+        btn_discover = (Button) findViewById(R.id.imageButton);
+        btn_discover.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                JSONObject jresponse = null;
+                try {
+                    try {
+
+                        DiscoverTagTask discover = new DiscoverTagTask();
+                        discover.execute();
+
+                        jresponse = new JSONObject(String.valueOf(discover.get()));
+                        String discoverTag = jresponse.getString("discover_tag");
+                        Log.e("DISCOVERTAG", discoverTag);
+                        Intent i= new Intent(MainActivity.this, TimedPhotoActivity.class);
+                        i.putExtra("tag", discoverTag);
+                        i.putExtra("id",phone_id );
+                        startActivity(i);
+
+
+                    } catch (JSONException e) {
+                     e.printStackTrace();
+
+
+                    }
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+
 
             }
         });
+
 
         //Get task
         PictureGetTask myTask = new PictureGetTask(this); //

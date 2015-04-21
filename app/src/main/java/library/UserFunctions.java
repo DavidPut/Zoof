@@ -26,14 +26,16 @@ public class UserFunctions {
     //random
     private String TAG_RANDOM = "picture_random";
 
-<<<<<<< HEAD
+
     //like
     private String TAG_LIKE = "picture_like";
-=======
+
     //wipe
     private String TAG_WIPE = "get_wipetime";
 
->>>>>>> origin/master
+    //discover
+    private String TAG_DISCOVER = "discover_tag";
+
 
     // constructor
     public UserFunctions(){
@@ -105,6 +107,13 @@ public class UserFunctions {
         return json;
     }
 
+    public JSONObject discoverTag(){
+        // Building Parameters
+        ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", TAG_DISCOVER));
+        JSONObject json = jsonParser.getJSONFromUrl(URL, params);
+        return json;
+    }
 
 
 }

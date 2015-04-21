@@ -23,6 +23,8 @@ import org.json.JSONObject;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
+import AsyncTasks.DiscoverTagTask;
+import AsyncTasks.LikePictureTask;
 import AsyncTasks.LoadPicturesTask;
 import AsyncTasks.RandomPictureTask;
 
@@ -39,11 +41,14 @@ public class TimedPhotoActivity extends ActionBarActivity {
     ImageButton btn_like;
     private ImageView imageView;
     Bitmap photo;
+    Button btn_discover;
     private String phone_id;
     private String tag;
     private JSONObject jobj;
     private static final String TAG_URL = "url";
     private RandomPictureTask myTask;
+    String pid1;
+    String pid2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,23 +93,28 @@ public class TimedPhotoActivity extends ActionBarActivity {
         btn_message = (ImageButton) findViewById(R.id.button_message);
         btn_like = (ImageButton) findViewById(R.id.button_like);
 
-        btn_like.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
-                //add like
-
-            }
-
-        });
 
         JSONObject jresponse = null;
         try {
             try {
                 jresponse = new JSONObject(String.valueOf(myTask.get()));
                 String responseString = jresponse.getString("url");
-                Log.e("HALLOOOO" , responseString);
-                Log.e("DIT IS", "http://zoofzoof.nl/pictures/" + responseString );
+
+
+                pid1 = jresponse.getString("pid");
+                Log.e("PID1", pid1);
+                btn_like.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        //Add like
+                        LikePictureTask like = new LikePictureTask(pid1);
+                        like.execute();
+                        btn_like.setVisibility(View.INVISIBLE);
+                    }
+
+                });
 
                 ImageView image = (ImageView) findViewById(R.id.main_image);
                 LoadPicturesTask loadpictures = new LoadPicturesTask((image));
@@ -116,7 +126,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
 //                e.printStackTrace();
                 ImageView image = (ImageView) findViewById(R.id.main_image);
                 LoadPicturesTask loadpictures = new LoadPicturesTask((image));
-                loadpictures.execute("http://2.bp.blogspot.com/-2HYczDyC2VA/ULUz8i4fDjI/AAAAAAAAADY/gV4zQDCbiMs/s1600/nomore.png");
+                loadpictures.execute("http://zoofzoof.nl/pictures/default/Error.png");
                 btn_message.setVisibility(View.INVISIBLE);
                 btn_like.setVisibility(View.INVISIBLE);
 
@@ -135,8 +145,48 @@ public class TimedPhotoActivity extends ActionBarActivity {
         countDownTimer = new MyCountDownTimer(startTime, interval);
         text.setText(text.getText() + String.valueOf(startTime / 1000));
 
+
         countDownTimer.start();
         timerHasStarted = true;
+
+        //Discover
+        btn_discover = (Button) findViewById(R.id.imageButton);
+        btn_discover.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                JSONObject jresponse = null;
+                try {
+                    try {
+
+                        DiscoverTagTask discover = new DiscoverTagTask();
+                        discover.execute();
+
+                        jresponse = new JSONObject(String.valueOf(discover.get()));
+                        String discoverTag = jresponse.getString("discover_tag");
+                        Intent i= new Intent(TimedPhotoActivity.this, TimedPhotoActivity.class);
+                        i.putExtra("tag", discoverTag);
+                        i.putExtra("id",phone_id );
+                        startActivity(i);
+                        finish();
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+
+
+                    }
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
 
 
 
@@ -198,8 +248,20 @@ public class TimedPhotoActivity extends ActionBarActivity {
                 try {
                     jresponse = new JSONObject(String.valueOf(myTaskAfterTimer.get()));
                     String responseString = jresponse.getString("url");
-                    Log.e("HALLOOOO" , responseString);
-                    Log.e("DIT IS", "http://zoofzoof.nl/pictures/" + responseString );
+                    pid2 = jresponse.getString("pid");
+                    Log.e("PID2", pid2);
+                    btn_like.setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View view) {
+                            //Add like
+                            LikePictureTask like = new LikePictureTask(pid2);
+                            like.execute();
+
+                            btn_like.setVisibility(View.INVISIBLE);
+                        }
+
+                    });
 
                     ImageView image = (ImageView) findViewById(R.id.main_image);
                     LoadPicturesTask loadpictures = new LoadPicturesTask((image));
@@ -213,7 +275,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
 //                e.printStackTrace();
                     ImageView image = (ImageView) findViewById(R.id.main_image);
                     LoadPicturesTask loadpictures = new LoadPicturesTask((image));
-                    loadpictures.execute("http://2.bp.blogspot.com/-2HYczDyC2VA/ULUz8i4fDjI/AAAAAAAAADY/gV4zQDCbiMs/s1600/nomore.png");
+                    loadpictures.execute("http://zoofzoof.nl/pictures/default/Error.png");
                     btn_message.setVisibility(View.INVISIBLE);
                     btn_like.setVisibility(View.INVISIBLE);
 
@@ -224,10 +286,9 @@ public class TimedPhotoActivity extends ActionBarActivity {
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
-
-
-
-
+            //Restart timer
+            countDownTimer.cancel();
+            countDownTimer.start();
         }
 
         @Override
