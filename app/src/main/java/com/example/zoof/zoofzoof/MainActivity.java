@@ -27,6 +27,7 @@ import org.json.JSONObject;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
+import AsyncTasks.GetWipeTimeTask;
 import AsyncTasks.LoadPicturesTask;
 import AsyncTasks.PhoneSaveTask;
 import AsyncTasks.PictureGetTask;
@@ -47,7 +48,8 @@ public class MainActivity extends ActionBarActivity {
     private CountDownTimer countDownTimer;
     private boolean timerHasStarted = false;
     public TextView text;
-    private final long startTime = 86400000;
+    //private final long startTime = 86400000; // dag
+    private final long startTime = 20000; //
 
     private final long interval = 1 * 1000;
     String phone_id;
@@ -181,6 +183,8 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+
+    // Timer object
     public class MyCountDownTimer extends CountDownTimer {
         public MyCountDownTimer(long startTime, long interval) {
             super(startTime, interval);
@@ -188,7 +192,19 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public void onFinish() {
-            text.setText("Wipe!");
+
+            GetWipeTimeTask myTimeTask = new GetWipeTimeTask(); //
+            //Run task
+            myTimeTask.execute();
+
+            // refresh de screen (alle elementen naar de standaard kleur)
+            for(int i = 0 ; i < 9; i++) {
+                ImageView img= (ImageView) findViewById(popularIDs[i]);
+                img.setImageDrawable(null);
+            }
+
+            text.setText("All photos deleted");
+
         }
 
         @Override
@@ -196,9 +212,9 @@ public class MainActivity extends ActionBarActivity {
             text.setText(""+String.format("%02d:%02d:%02d",
                     TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
                     TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) -
-                            TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)), // The change is in this line
+                    TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
                     TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
-                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
         }
     }
 }

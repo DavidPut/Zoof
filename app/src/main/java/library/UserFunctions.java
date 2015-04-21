@@ -26,8 +26,14 @@ public class UserFunctions {
     //random
     private String TAG_RANDOM = "picture_random";
 
+<<<<<<< HEAD
     //like
     private String TAG_LIKE = "picture_like";
+=======
+    //wipe
+    private String TAG_WIPE = "get_wipetime";
+
+>>>>>>> origin/master
 
     // constructor
     public UserFunctions(){
@@ -80,6 +86,14 @@ public class UserFunctions {
         return json;
     }
 
+    public JSONObject wipeTime(){
+        // Building Parameters
+        ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", TAG_WIPE));
+        JSONObject json = jsonParser.getJSONFromUrl(URL, params);
+
+        return json;
+    }
 
     public JSONObject saveLike(String pid){
         // Building Parameters
