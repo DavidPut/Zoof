@@ -26,5 +26,7 @@
     <string name="button_description_like">Like</string>
     <string name="title_activity_profile">Profile</string>
     <string name="title_activity_photo_detail">Detail</string>
+    //Profile
+    <string name="button_profile_upload">Choose name</string>
 
 </resources>

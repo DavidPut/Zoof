@@ -46,6 +46,10 @@ public class ProfileActivity extends ActionBarActivity {
                 jresponse = new JSONObject(String.valueOf(profileTask.get()));
                 String responseString = jresponse.getString("alias");
 
+                EditText aliasText;
+                aliasText= (EditText)findViewById(R.id.aliasText);
+                aliasText.setText(responseString);
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -87,6 +91,8 @@ public class ProfileActivity extends ActionBarActivity {
             }
         });
 
+
+
         //Discover
         btn_discover = (Button) findViewById(R.id.imageButton);
         btn_discover.setOnClickListener(new View.OnClickListener() {
@@ -94,35 +100,35 @@ public class ProfileActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
-                JSONObject jresponse = null;
-                try {
+                    JSONObject jresponse = null;
                     try {
+                        try {
 
-                        DiscoverTagTask discover = new DiscoverTagTask();
-                        discover.execute();
+                            DiscoverTagTask discover = new DiscoverTagTask();
+                            discover.execute();
 
-                        jresponse = new JSONObject(String.valueOf(discover.get()));
-                        String discoverTag = jresponse.getString("discover_tag");
-                        Log.e("DISCOVERTAG", discoverTag);
-                        Intent i= new Intent(ProfileActivity.this, TimedPhotoActivity.class);
-                        i.putExtra("tag", discoverTag);
-                        i.putExtra("id",phone_id );
-                        startActivity(i);
+                            jresponse = new JSONObject(String.valueOf(discover.get()));
+                            String discoverTag = jresponse.getString("discover_tag");
+                            Intent i= new Intent(ProfileActivity.this, TimedPhotoActivity.class);
+                            i.putExtra("tag", discoverTag);
+                            i.putExtra("id",phone_id );
+                            startActivity(i);
 
 
-                    } catch (JSONException e) {
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+
+
+                        }
+
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
-
-
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
                     }
 
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
 
-
+                
             }
         });
     }

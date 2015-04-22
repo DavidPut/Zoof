@@ -38,6 +38,7 @@ public class UserFunctions {
 
     //profile
     private String TAG_PROFILE = "profile";
+    private String TAG_UPDATE_PROFILE = "update_profile";
 
 
     // constructor
@@ -131,7 +132,7 @@ public class UserFunctions {
     public JSONObject update_profile(String id, String name){
         // Building Parameters
         ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("tag", TAG_PROFILE));
+        params.add(new BasicNameValuePair("tag", TAG_UPDATE_PROFILE));
         params.add(new BasicNameValuePair("id", id));
         params.add(new BasicNameValuePair("alias", name));
         JSONObject json = jsonParser.getJSONFromUrl(URL, params);
