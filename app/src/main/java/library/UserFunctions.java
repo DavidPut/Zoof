@@ -128,5 +128,15 @@ public class UserFunctions {
         return json;
     }
 
+    public JSONObject update_profile(String id, String name){
+        // Building Parameters
+        ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", TAG_PROFILE));
+        params.add(new BasicNameValuePair("id", id));
+        params.add(new BasicNameValuePair("alias", name));
+        JSONObject json = jsonParser.getJSONFromUrl(URL, params);
+        return json;
+    }
+
 
 }
