@@ -209,6 +209,7 @@ public class MainActivity extends ActionBarActivity {
                     {
                         Intent detail = new Intent(MainActivity.this, PhotoDetailActivity.class);
                         detail.putExtra("url", curUrl);
+                        detail.putExtra("id", phone_id);
                         startActivity(detail);
                     }
                 });
