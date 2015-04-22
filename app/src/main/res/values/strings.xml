@@ -34,5 +34,6 @@
     <string name="button_like">+1</string>
     <string name="button_description_msg">Message</string>
     <string name="button_description_like">Like</string>
+    <string name="title_activity_profile">ProfileActivity</string>
 
 </resources>

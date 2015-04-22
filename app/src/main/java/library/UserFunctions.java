@@ -36,6 +36,9 @@ public class UserFunctions {
     //discover
     private String TAG_DISCOVER = "discover_tag";
 
+    //profile
+    private String TAG_PROFILE = "profile";
+
 
     // constructor
     public UserFunctions(){
@@ -112,6 +115,15 @@ public class UserFunctions {
         // Building Parameters
         ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("tag", TAG_DISCOVER));
+        JSONObject json = jsonParser.getJSONFromUrl(URL, params);
+        return json;
+    }
+
+    public JSONObject get_profile(String id){
+        // Building Parameters
+        ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", TAG_PROFILE));
+        params.add(new BasicNameValuePair("id", id));
         JSONObject json = jsonParser.getJSONFromUrl(URL, params);
         return json;
     }

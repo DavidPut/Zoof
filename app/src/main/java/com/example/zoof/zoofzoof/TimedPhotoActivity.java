@@ -43,6 +43,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
     private ImageView imageView;
     Bitmap photo;
     Button btn_discover;
+    Button btn_profile;
     private String phone_id;
     private String tag;
     private JSONObject jobj;
@@ -152,7 +153,15 @@ public class TimedPhotoActivity extends ActionBarActivity {
         }
 
 
-
+        //Profile
+        btn_profile = (Button) findViewById(R.id.button_profile);
+        btn_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(TimedPhotoActivity.this, ProfileActivity.class);
+                startActivity(intent2);
+            }
+        });
 
 
         //Discover

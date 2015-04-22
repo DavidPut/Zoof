@@ -46,6 +46,7 @@ public class MainActivity extends ActionBarActivity {
 
     Button btn_camera;
     Button btn_discover;
+    Button btn_profile;
 
     //Timer
     private CountDownTimer countDownTimer;
@@ -115,6 +116,18 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CameraActivity.class);
                 startActivity(intent);
+            }
+        });
+
+
+        //Profile
+        btn_profile = (Button) findViewById(R.id.button_profile);
+        btn_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MainActivity.this, ProfileActivity.class);
+                intent2.putExtra("phone_id", phone_id);
+                startActivity(intent2);
             }
         });
 
