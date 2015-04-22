@@ -1,7 +1,6 @@
 package com.example.zoof.zoofzoof;
 
 
-import android.app.ActionBar;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -10,17 +9,15 @@ import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
-import android.text.format.Time;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,6 +52,7 @@ public class MainActivity extends ActionBarActivity {
     //private final long startTime = 86400000; // dag
     private long startTime = 20000; //
 
+
     private final long interval = 1 * 1000;
     String phone_id;
 
@@ -83,10 +81,6 @@ public class MainActivity extends ActionBarActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
-
-
-
 
 
         //Unique hardware id
@@ -147,7 +141,6 @@ public class MainActivity extends ActionBarActivity {
 
                         jresponse = new JSONObject(String.valueOf(discover.get()));
                         String discoverTag = jresponse.getString("discover_tag");
-                        Log.e("DISCOVERTAG", discoverTag);
                         Intent i= new Intent(MainActivity.this, TimedPhotoActivity.class);
                         i.putExtra("tag", discoverTag);
                         i.putExtra("id",phone_id );
@@ -196,10 +189,32 @@ public class MainActivity extends ActionBarActivity {
                 // Storing  JSON item in a Variable
                 String likes = c.getString(TAG_LIKES);
                 String url = c.getString(TAG_URL);
+//                Log.e("URL", url);
                 // Moet de thumbnails inladen van alle bestanden en in d
 
                 new LoadPicturesTask((ImageView) findViewById(popularIDs[i]))
                         .execute(url);
+
+
+                //Setonclick
+                ImageView img = (ImageView) findViewById(popularIDs[i]);
+
+                JSONObject a = jarr.getJSONObject(i);
+                final  String curUrl = a.getString("url");
+
+                img.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v)
+                    {
+                        Intent detail = new Intent(MainActivity.this, PhotoDetailActivity.class);
+                        detail.putExtra("url", curUrl);
+                        startActivity(detail);
+                    }
+                });
+
+
+
+
+
 //              TextView valueLikes = new TextView(this);
 //              valueLikes.setText(likes);
 //              valueLikes.setId(i);
@@ -211,6 +226,9 @@ public class MainActivity extends ActionBarActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+
+
 
 
     }
