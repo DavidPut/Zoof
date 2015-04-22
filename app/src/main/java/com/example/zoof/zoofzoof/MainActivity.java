@@ -52,6 +52,8 @@ public class MainActivity extends ActionBarActivity {
     //private final long startTime = 86400000; // dag
     private long startTime = 20000; //
 
+    //
+
 
     private final long interval = 1 * 1000;
     String phone_id;
