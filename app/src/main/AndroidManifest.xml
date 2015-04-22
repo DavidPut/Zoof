@@ -38,8 +38,7 @@
         </activity>
         <activity
             android:name=".CameraActivity"
-            android:label="@string/title_activity_camera"
-            android:screenOrientation="portrait">
+            android:label="@string/title_activity_camera">
         </activity>
         <activity
             android:name=".TimedPhotoActivity"
