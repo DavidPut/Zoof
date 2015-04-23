@@ -20,13 +20,16 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#000000">
+
 
                 <EditText
                     android:id="@+id/commentText"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:layout_height="100dp"
+                    android:inputType="textMultiLine"
+                    android:background="#FFFFFF"
                     android:layout_below="@+id/main_image"
                     android:layout_alignLeft="@+id/Button_upload"
                     android:layout_alignStart="@+id/Button_upload"
@@ -35,9 +38,11 @@
 
                 <Button
                     android:id="@+id/Button_upload"
-                    android:layout_width="wrap_content"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/button_comment_upload"
+                    android:textColor="#FFFFFF"
+                    android:background="#FF6600"
                     android:layout_below="@+id/commentText"
                     android:layout_centerHorizontal="true" />
 
@@ -60,12 +65,14 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="0dip"
-                    android:layout_weight="0.7">
+                    android:layout_weight="0.7"
+                    android:background="#000000">
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:background="#000000">
 
                         <RelativeLayout
                             android:layout_width="0dip"
