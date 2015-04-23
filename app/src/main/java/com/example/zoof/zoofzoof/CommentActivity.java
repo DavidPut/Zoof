@@ -36,6 +36,7 @@ public class CommentActivity extends ActionBarActivity {
         Log.e("PID IS", pid);
 
         //Buttons
+        
         //Camera
         btn_camera = (Button) findViewById(R.id.button);
         btn_camera.setOnClickListener(new View.OnClickListener() {
