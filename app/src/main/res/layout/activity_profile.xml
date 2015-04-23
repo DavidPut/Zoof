@@ -44,7 +44,7 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="0dip"
+            android:layout_height="1dip"
             android:layout_weight="0.3">
 
 
@@ -88,7 +88,7 @@
                                 android:src="@drawable/ic_action_warning"
                                 android:adjustViewBounds="false"
                                 android:cropToPadding="false"
-                                android:background="#E53232"/>
+                                android:background="#FF6600"/>
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -101,7 +101,7 @@
                                 android:layout_height="fill_parent"
                                 android:scaleType="fitCenter"
                                 android:id="@+id/button"
-                                android:background="#E53232"
+                                android:background="#FF6600"
                                 android:textColor="#FFFFFF"
                                 android:contentDescription="@string/button_camera_desc"
                                 android:drawableLeft="@drawable/ic_action_camera"
@@ -121,7 +121,7 @@
                                 android:text="@string/button_profile_txt"
                                 android:scaleType="fitCenter"
                                 android:id="@+id/button_profile"
-                                android:background="#E53232"
+                                android:background="#FF6600"
                                 android:textColor="#FFFFFF"
                                 android:contentDescription="@string/button_profile_desc"/>
                         </RelativeLayout>
