@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,6 +17,7 @@ import org.w3c.dom.Comment;
 
 import java.util.concurrent.ExecutionException;
 
+import AsyncTasks.CommentUploadTask;
 import AsyncTasks.DiscoverTagTask;
 
 
@@ -22,9 +25,12 @@ public class CommentActivity extends ActionBarActivity {
 
     private String pid;
     private String id;
+    private String userComment;
     Button btn_camera;
     Button btn_discover;
     Button btn_profile;
+    Button btn_upload;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +39,55 @@ public class CommentActivity extends ActionBarActivity {
         Intent intent = getIntent();
         pid = intent.getStringExtra("pid");
         id = intent.getStringExtra("id");
-        Log.e("PID IS", pid);
 
         //Buttons
-        
+        btn_upload = (Button) findViewById(R.id.Button_upload);
+        btn_upload.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                //Get user comment
+                EditText commentText;
+                commentText= (EditText)findViewById(R.id.commentText);
+                userComment = commentText.getText().toString();
+
+                //Execute task
+                CommentUploadTask comment = new CommentUploadTask(id, pid, userComment);
+                comment.execute();
+
+                JSONObject jresponse = null;
+                try {
+                    try {
+                        jresponse = new JSONObject(String.valueOf(comment.get()));
+                        String responseString = jresponse.getString("success");
+
+                        if(responseString.equals("1")){
+                            Intent intent = new Intent(CommentActivity.this, MainActivity.class);
+                            Toast.makeText(CommentActivity.this,
+                                    "Comment successfully uploaded.", Toast.LENGTH_LONG).show();
+                            finish();
+                            startActivity(intent);
+                        }
+                        else{
+                            Intent intent = new Intent(CommentActivity.this, MainActivity.class);
+                            Toast.makeText(CommentActivity.this,
+                                    "Something went wrong, comment not uploaded.", Toast.LENGTH_LONG).show();
+                            finish();
+                            startActivity(intent);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         //Camera
         btn_camera = (Button) findViewById(R.id.button);
         btn_camera.setOnClickListener(new View.OnClickListener() {

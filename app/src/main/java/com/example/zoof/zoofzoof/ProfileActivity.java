@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,6 +30,7 @@ public class ProfileActivity extends ActionBarActivity {
     Button btn_upload;
     String phone_id;
     String alias;
+    String success;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class ProfileActivity extends ActionBarActivity {
             try {
                 jresponse = new JSONObject(String.valueOf(profileTask.get()));
                 String responseString = jresponse.getString("alias");
+                success = jresponse.getString("success");
+
 
                 EditText aliasText;
                 aliasText= (EditText)findViewById(R.id.aliasText);
@@ -142,6 +146,25 @@ public class ProfileActivity extends ActionBarActivity {
 
         // Upload image to server
         new UpdateProfileTask(phone_id,alias).execute();
+
+        if(success.equals("1")){
+            Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+            Toast.makeText(ProfileActivity.this,
+                    "Alias successfully changed.", Toast.LENGTH_LONG).show();
+            finish();
+            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+            Toast.makeText(ProfileActivity.this,
+                    "Something went wrong, alias not changed.", Toast.LENGTH_LONG).show();
+            finish();
+            startActivity(intent);
+        }
+
+
+
+
     }
 
 

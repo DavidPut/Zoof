@@ -5,6 +5,8 @@
     android:id="@+id/main"
     android:orientation="vertical">
 
+
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -20,34 +22,24 @@
                 android:layout_height="fill_parent"
                 android:orientation="vertical">
 
-                <RelativeLayout
+                <EditText
+                    android:id="@+id/commentText"
                     android:layout_width="fill_parent"
-                    android:layout_height="0dip"
-                    android:layout_weight="0.33">
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:layout_below="@+id/main_image"
+                    android:layout_alignLeft="@+id/Button_upload"
+                    android:layout_alignStart="@+id/Button_upload"
+                    android:layout_alignRight="@+id/Button_upload"
+                    android:layout_alignEnd="@+id/Button_upload" />
 
-                    <!--Rij 1-->
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-
-                        <RelativeLayout
-                            android:layout_width="0dip"
-                            android:layout_height="fill_parent"
-                            android:layout_weight="0.33">
-                            ImageView  android:id="@+id/main_image"
-                                android:layout_width="fill_parent"
-                                android:layout_height="fill_parent"
-                                android:background="#000000"
-                                android:clickable="true" />
-                        </RelativeLayout>
-
-
-                    </LinearLayout>
-
-                </RelativeLayout>
-
+                <Button
+                    android:id="@+id/Button_upload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_comment_upload"
+                    android:layout_below="@+id/commentText"
+                    android:layout_centerHorizontal="true" />
 
             </LinearLayout>
 

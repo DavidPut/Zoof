@@ -3,6 +3,7 @@ package com.example.zoof.zoofzoof;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,7 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import AsyncTasks.CommentGetTask;
 import AsyncTasks.DiscoverTagTask;
+import AsyncTasks.GetProfileTask;
 import AsyncTasks.LoadPicturesTask;
 
 
@@ -26,10 +30,17 @@ public class PhotoDetailActivity extends ActionBarActivity {
 
     String url;
     String phone_id;
+    String picture_id;
     private ListView lv;
     Button btn_camera;
     Button btn_discover;
     Button btn_profile;
+    private static final String TAG_COMMENTS = "comments";
+    private static final String TAG_COMMENT = "comment";
+    private String userAlias;
+    private JSONObject jobj;
+    private JSONArray jarr;
+
 
 
     @Override
@@ -37,15 +48,69 @@ public class PhotoDetailActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_detail);
 
+        //Get url
+        Intent intent = getIntent();
+        url = intent.getStringExtra("url");
+        phone_id = intent.getStringExtra("id");
+        picture_id =  intent.getStringExtra("pid");
+
+
+        //Execute task getcomments
+        CommentGetTask comments = new CommentGetTask(phone_id, picture_id);
+        comments.execute();
+
+        //Execute task get alias
+        GetProfileTask alias = new GetProfileTask(phone_id);
+        alias.execute();
+
+        JSONObject jresponse = null;
+        try {
+            try {
+                jresponse = new JSONObject(String.valueOf(alias.get()));
+                 userAlias = jresponse.getString("alias");
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+
         //Listview
         lv = (ListView) findViewById(R.id.listView);
 
         //Messages
         List<String> messages = new ArrayList<String>();
-        messages.add("Hallo");
-        messages.add("Super vette comment");
-        messages.add("Wow");
-        messages.add("Such");
+
+        try {
+            jobj = comments.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        try {
+
+            // Getting JSON Array
+            jarr = jobj.getJSONArray(TAG_COMMENTS);
+
+            for(int i = 0 ; i < jarr.length(); i++) {
+                JSONObject c = jarr.getJSONObject(i);
+                // Storing  JSON item in a Variable
+                String comment = c.getString(TAG_COMMENT);
+                messages.add(userAlias + " - " + comment);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
 
         //Fill list
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
@@ -54,10 +119,6 @@ public class PhotoDetailActivity extends ActionBarActivity {
                 messages );
         lv.setAdapter(arrayAdapter);
 
-        //Get url
-        Intent intent = getIntent();
-        url = intent.getStringExtra("url");
-        phone_id = intent.getStringExtra("id");
 
 
         //Load image

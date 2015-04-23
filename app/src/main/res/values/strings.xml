@@ -32,5 +32,8 @@
     //Profile
     <string name="button_profile_upload">Choose name</string>
 
+    //Comments
+    <string name="button_comment_upload">Upload comment</string>
+
 
 </resources>

@@ -40,6 +40,10 @@ public class UserFunctions {
     private String TAG_PROFILE = "profile";
     private String TAG_UPDATE_PROFILE = "update_profile";
 
+    //comment
+    private String TAG_UPLOAD_COMMENT = "upload_comment";
+    private String TAG_GET_COMMENTS = "get_comments";
+
 
     // constructor
     public UserFunctions(){
@@ -138,6 +142,29 @@ public class UserFunctions {
         JSONObject json = jsonParser.getJSONFromUrl(URL, params);
         return json;
     }
+
+    public JSONObject uploadComment(String id, String pid, String comment){
+        // Building Parameters
+        ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", TAG_UPLOAD_COMMENT));
+        params.add(new BasicNameValuePair("id", id));
+        params.add(new BasicNameValuePair("pid", pid));
+        params.add(new BasicNameValuePair("comment", comment));
+        JSONObject json = jsonParser.getJSONFromUrl(URL, params);
+        return json;
+    }
+
+    public JSONObject getComments(String id, String pid){
+        // Building Parameters
+        ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", TAG_GET_COMMENTS));
+        params.add(new BasicNameValuePair("id", id));
+        params.add(new BasicNameValuePair("pid", pid));
+        JSONObject json = jsonParser.getJSONFromUrl(URL, params);
+        return json;
+    }
+
+
 
 
 }

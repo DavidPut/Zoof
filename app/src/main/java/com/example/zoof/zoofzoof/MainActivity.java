@@ -39,6 +39,7 @@ public class MainActivity extends ActionBarActivity {
     private static final String TAG_PICTURES = "pictures";
     private static final String TAG_LIKES = "likes";
     private static final String TAG_URL = "url";
+    private static final String TAG_PID = "pid";
     private int []popularIDs = new int[] {R.id.popular1, R.id.popular2, R.id.popular3, R.id.popular4, R.id.popular5, R.id.popular6, R.id.popular7, R.id.popular8, R.id.popular9};
 
     Button btn_camera;
@@ -191,6 +192,7 @@ public class MainActivity extends ActionBarActivity {
                 // Storing  JSON item in a Variable
                 String likes = c.getString(TAG_LIKES);
                 String url = c.getString(TAG_URL);
+
 //                Log.e("URL", url);
                 // Moet de thumbnails inladen van alle bestanden en in d
 
@@ -203,6 +205,7 @@ public class MainActivity extends ActionBarActivity {
 
                 JSONObject a = jarr.getJSONObject(i);
                 final  String curUrl = a.getString("url");
+                final String pid = a.getString(TAG_PID);
 
                 img.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v)
@@ -210,6 +213,7 @@ public class MainActivity extends ActionBarActivity {
                         Intent detail = new Intent(MainActivity.this, PhotoDetailActivity.class);
                         detail.putExtra("url", curUrl);
                         detail.putExtra("id", phone_id);
+                        detail.putExtra("pid", pid);
                         startActivity(detail);
                     }
                 });
