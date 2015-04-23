@@ -1,46 +1,67 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CameraActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+android:layout_height="fill_parent"
+tools:context=".CameraActivity">
 
-    <ImageView
-        android:id="@+id/main_image"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:contentDescription="@string/camera_description" />
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/tag"
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/tag_hint"
-        android:inputType="text"
-        android:layout_below="@+id/main_image"
-        android:layout_alignLeft="@+id/Button_upload"
-        android:layout_alignStart="@+id/Button_upload"
-        android:layout_alignRight="@+id/Button_upload"
-        android:layout_alignEnd="@+id/Button_upload" />
+        android:layout_height="fill_parent">
 
-    <Button
-        android:id="@+id/Button_upload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/camera_upload_image"
-        android:layout_below="@+id/tag"
-        android:layout_centerHorizontal="true" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
 
-</RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dip"
+                android:layout_weight="0.7">
 
+                <ImageView
+                    android:id="@+id/main_image"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="#000000"
+                    android:contentDescription="@string/camera_description" />
 
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dip"
+                android:layout_weight="0.10">
 
+                <!--rij 2-->
+                <EditText
+                    android:id="@+id/tag"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:hint="@string/tag_hint"
+                    android:inputType="text" />
 
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dip"
+                android:layout_weight="0.15">
 
+                <!--Rij 3-->
+                <Button
+                    android:id="@+id/Button_upload"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="@string/camera_upload_image"
+                    android:layout_centerHorizontal="true"
+                    android:background="#FF6600"
+                    android:textColor="#FFFFFF"/>
+            </RelativeLayout>
+        </LinearLayout>
 
+    </RelativeLayout>
 
-
-
-
-
-
-
+    </LinearLayout>
+</LinearLayout>
