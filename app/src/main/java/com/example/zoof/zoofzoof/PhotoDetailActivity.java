@@ -37,6 +37,7 @@ public class PhotoDetailActivity extends ActionBarActivity {
     Button btn_profile;
     private static final String TAG_COMMENTS = "comments";
     private static final String TAG_COMMENT = "comment";
+    private static final String TAG_ALIAS = "alias";
     private String userAlias;
     private JSONObject jobj;
     private JSONArray jarr;
@@ -56,29 +57,8 @@ public class PhotoDetailActivity extends ActionBarActivity {
 
 
         //Execute task getcomments
-        CommentGetTask comments = new CommentGetTask(phone_id, picture_id);
+        CommentGetTask comments = new CommentGetTask(picture_id);
         comments.execute();
-
-        //Execute task get alias
-        GetProfileTask alias = new GetProfileTask(phone_id);
-        alias.execute();
-
-        JSONObject jresponse = null;
-        try {
-            try {
-                jresponse = new JSONObject(String.valueOf(alias.get()));
-                 userAlias = jresponse.getString("alias");
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
 
 
         //Listview
@@ -104,7 +84,8 @@ public class PhotoDetailActivity extends ActionBarActivity {
                 JSONObject c = jarr.getJSONObject(i);
                 // Storing  JSON item in a Variable
                 String comment = c.getString(TAG_COMMENT);
-                messages.add(userAlias + " - " + comment);
+                String alias = c.getString(TAG_ALIAS);
+                messages.add(alias + " - " + comment);
             }
 
         } catch (JSONException e) {

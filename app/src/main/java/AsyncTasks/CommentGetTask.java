@@ -11,10 +11,9 @@ public class CommentGetTask extends AsyncTask<Void, Void, JSONObject> {
     private String phone_id;
     private String picture_id;
 
-    public CommentGetTask(String id , String pid)
+    public CommentGetTask(String pid)
     {
-        phone_id = id;
-        picture_id = pid;
+         picture_id = pid;
     }
 
     protected void onPreExecute() {
@@ -25,7 +24,7 @@ public class CommentGetTask extends AsyncTask<Void, Void, JSONObject> {
     protected JSONObject doInBackground(Void... params) {
 
         UserFunctions userFunction = new UserFunctions();
-        JSONObject json = userFunction.getComments(phone_id, picture_id);
+        JSONObject json = userFunction.getComments(picture_id);
 
         return json;
 

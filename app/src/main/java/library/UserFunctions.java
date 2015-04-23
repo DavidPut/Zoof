@@ -154,12 +154,11 @@ public class UserFunctions {
         return json;
     }
 
-    public JSONObject getComments(String id, String pid){
+    public JSONObject getComments(String pid){
         // Building Parameters
         ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("tag", TAG_GET_COMMENTS));
-        params.add(new BasicNameValuePair("id", id));
-        params.add(new BasicNameValuePair("pid", pid));
+         params.add(new BasicNameValuePair("pid", pid));
         JSONObject json = jsonParser.getJSONFromUrl(URL, params);
         return json;
     }
