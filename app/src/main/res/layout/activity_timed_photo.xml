@@ -156,9 +156,9 @@
                                 android:textColor="#FFFFFF"
                                 android:scaleType="fitCenter"
                                 android:contentDescription="@string/button_random_desc"
-                                android:drawableLeft="@drawable/ic_action_warning"
-                                android:drawableStart="@drawable/ic_action_warning"
-                                android:src="@drawable/ic_action_warning"
+                                android:drawableLeft="@drawable/ic_action_shuffle"
+                                android:drawableStart="@drawable/ic_action_shuffle"
+                                android:src="@drawable/ic_action_shuffle"
                                 android:adjustViewBounds="false"
                                 android:cropToPadding="false"
                                 android:background="#FF6600"/>
