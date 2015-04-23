@@ -1,6 +1,8 @@
 package com.example.zoof.zoofzoof;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -43,10 +45,18 @@ public class CameraActivity extends ActionBarActivity {
         //Edit tag
         tag   = (EditText)findViewById(R.id.tag);
         tag.setText("#");
+        int pos = tag.getText().length();
+        tag.setSelection(pos);
 
         //Start camera on startup
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, 100);
+
+
+
+
+
+
 
 
         btn_upload = (Button) findViewById(R.id.Button_upload);
@@ -61,6 +71,7 @@ public class CameraActivity extends ActionBarActivity {
     //Show picture in imageview
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             if (requestCode == 100 && resultCode == RESULT_OK ) {
+
                 photo = (Bitmap) data.getExtras().get("data");
                 imageView.setImageBitmap(photo);
             }
@@ -110,7 +121,7 @@ public class CameraActivity extends ActionBarActivity {
                 Settings.Secure.ANDROID_ID);
 
         if (tag_value.matches("")) {
-            Toast.makeText(this, "You did not enter a tag", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter a tag", Toast.LENGTH_SHORT).show();
         }
         else{
             // Upload image to server

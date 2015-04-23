@@ -67,11 +67,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
 
         //Get phone_id
         phone_id = intent.getStringExtra("id");
-        Log.e("phone_Id" , phone_id);
-        Log.e("search_tag", tag);
-//
-//        //Get random info
-//        new RandomPictureTask(phone_id,tag).execute();
+
 
         //Set actionbar title to filtered tag
         getSupportActionBar().setTitle(tag);
@@ -116,7 +112,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
 
 
                 final String pid1 = jresponse.getString("pid");
-                Log.e("PID1", pid1);
+
                 btn_like.setOnClickListener(new View.OnClickListener() {
 
                     @Override
@@ -236,13 +232,13 @@ public class TimedPhotoActivity extends ActionBarActivity {
 
     //Show picture in imageview
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.e("test", "komt erin bij foto");
+
         if (requestCode == 100 && resultCode == RESULT_OK ) {
             photo = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(photo);
         }
         else {
-            Log.e("test", "terug");
+
         }
     }
 
@@ -290,7 +286,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
                     jresponse = new JSONObject(String.valueOf(myTaskAfterTimer.get()));
                     String responseString = jresponse.getString("url");
                     final String pid2 = jresponse.getString("pid");
-                    Log.e("PID2", pid2);
+
                     btn_like.setOnClickListener(new View.OnClickListener() {
 
                         @Override

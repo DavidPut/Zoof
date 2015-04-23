@@ -18,7 +18,7 @@
     //Menu icons        <string name="icon_camera">Camera</string>
     //Search        <string name="ic_search">Test</string>
     <string name="search_title">Test</string>
-    <string name="search_hint">#tag</string>
+    <string name="search_hint">#Tag</string>
     <string name="title_activity_timed_photo">Photo</string>
     //TimedPhoto        <string name="button_message">Message</string>
     <string name="button_like">+1</string>
