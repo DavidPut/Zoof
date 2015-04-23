@@ -274,7 +274,7 @@ public class MainActivity extends ActionBarActivity {
            searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
 
-
+        //Logo
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.ic_launcher);

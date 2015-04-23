@@ -30,11 +30,7 @@
                     android:layout_height="100dp"
                     android:inputType="textMultiLine"
                     android:background="#FFFFFF"
-                    android:layout_below="@+id/main_image"
-                    android:layout_alignLeft="@+id/Button_upload"
-                    android:layout_alignStart="@+id/Button_upload"
-                    android:layout_alignRight="@+id/Button_upload"
-                    android:layout_alignEnd="@+id/Button_upload" />
+                    />
 
                 <Button
                     android:id="@+id/Button_upload"
