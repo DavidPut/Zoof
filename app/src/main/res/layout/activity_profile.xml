@@ -24,7 +24,6 @@
                     android:id="@+id/aliasText"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/tag_hint"
                     android:inputType="text"
                     android:layout_below="@+id/main_image"
                     android:layout_alignLeft="@+id/Button_upload"
@@ -36,7 +35,7 @@
                     android:id="@+id/Button_upload"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/camera_upload_image"
+                    android:text="@string/button_profile_upload"
                     android:layout_below="@+id/tag"
                     android:layout_centerHorizontal="true" />
 
