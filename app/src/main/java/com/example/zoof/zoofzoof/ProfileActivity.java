@@ -1,6 +1,7 @@
 package com.example.zoof.zoofzoof;
 
 import android.content.Intent;
+import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,8 +35,8 @@ public class ProfileActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        Intent intent = getIntent();
-        phone_id = intent.getStringExtra("phone_id");
+        phone_id = Settings.Secure.getString(this.getContentResolver(),
+                        Settings.Secure.ANDROID_ID);
 
         GetProfileTask profileTask = new GetProfileTask(phone_id);
         profileTask.execute();
