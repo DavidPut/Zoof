@@ -2,6 +2,7 @@ package com.example.zoof.zoofzoof;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
@@ -125,7 +126,9 @@ public class TimedPhotoActivity extends ActionBarActivity {
                         //Add like
                         LikePictureTask like = new LikePictureTask(pid1);
                         like.execute();
-                        btn_like.setVisibility(View.INVISIBLE);
+                        //btn_like.setVisibility(View.INVISIBLE);
+                        btn_like.setBackgroundResource(android.R.color.holo_green_dark);
+                        btn_like.setOnClickListener(null);
                     }
 
                 });
@@ -135,6 +138,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
                 loadpictures.execute("http://zoofzoof.nl/pictures/" + responseString);
                 btn_message.setVisibility(View.VISIBLE);
                 btn_like.setVisibility(View.VISIBLE);
+
 
 
                 btn_message = (ImageButton) findViewById(R.id.button_message);
@@ -292,7 +296,9 @@ public class TimedPhotoActivity extends ActionBarActivity {
                             LikePictureTask like = new LikePictureTask(pid2);
                             like.execute();
 
-                            btn_like.setVisibility(View.INVISIBLE);
+                            btn_like.setBackgroundResource(android.R.color.holo_green_dark);
+                            btn_like.setOnClickListener(null);
+                            //btn_like.setVisibility(View.INVISIBLE);
                         }
 
                     });
@@ -303,6 +309,10 @@ public class TimedPhotoActivity extends ActionBarActivity {
 
                     btn_message.setVisibility(View.VISIBLE);
                     btn_like.setVisibility(View.VISIBLE);
+
+
+                    btn_like.setBackgroundColor(Color.parseColor("#AAAA22"));
+
 
                     btn_message = (ImageButton) findViewById(R.id.button_message);
                     btn_message.setOnClickListener(new View.OnClickListener() {

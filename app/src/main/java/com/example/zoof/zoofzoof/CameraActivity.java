@@ -40,6 +40,7 @@ public class CameraActivity extends ActionBarActivity {
 
         //Edit tag
         tag   = (EditText)findViewById(R.id.tag);
+        tag.setText("#");
 
         //Start camera on startup
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -100,8 +101,7 @@ public class CameraActivity extends ActionBarActivity {
         ba1 = Base64.encodeBytes(ba);
 
         //Get input value
-        Log.v("EditText", tag.getText().toString());
-        tag_value = tag.getText().toString();
+       tag_value = tag.getText().toString();
 
         //Unique hardware id
         phone_id = Settings.Secure.getString(this.getContentResolver(),
