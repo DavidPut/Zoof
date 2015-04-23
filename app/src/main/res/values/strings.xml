@@ -5,26 +5,27 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_camera">CameraActivity</string>
-    //Main    <string name="button_random_desc">Random image</string>
+    //Main        <string name="button_random_desc">Random image</string>
     <string name="button_camera_desc">Camera image</string>
     <string name="button_profile_desc">Profile image</string>
     <string name="button_camera_txt">Camera</string>
     <string name="button_profile_txt">Profile</string>
     <string name="button_random_txt">Discover</string>
-    //Camera    <string name="camera_click_image">Click image</string>
+    //Camera        <string name="camera_click_image">Click image</string>
     <string name="camera_upload_image">Upload image</string>
     <string name="camera_description">My camera picture</string>
     <string name="tag_hint">#tag</string>
-    //Menu icons    <string name="icon_camera">Camera</string>
-    //Search    <string name="ic_search">Test</string>
+    //Menu icons        <string name="icon_camera">Camera</string>
+    //Search        <string name="ic_search">Test</string>
     <string name="search_title">Test</string>
     <string name="search_hint">#tag</string>
     <string name="title_activity_timed_photo">Photo</string>
-    //TimedPhoto    <string name="button_message">Message</string>
+    //TimedPhoto        <string name="button_message">Message</string>
     <string name="button_like">+1</string>
     <string name="button_description_msg">Message</string>
     <string name="button_description_like">Like</string>
     <string name="title_activity_profile">Profile</string>
     <string name="title_activity_photo_detail">Detail</string>
+    <string name="title_activity_comment">Comments</string>
 
 </resources>

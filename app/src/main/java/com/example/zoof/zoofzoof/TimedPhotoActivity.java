@@ -16,10 +16,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Comment;
 
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
@@ -92,6 +94,8 @@ public class TimedPhotoActivity extends ActionBarActivity {
         });
 
         btn_message = (ImageButton) findViewById(R.id.button_message);
+
+
         btn_like = (ImageButton) findViewById(R.id.button_like);
 
 
@@ -109,10 +113,10 @@ public class TimedPhotoActivity extends ActionBarActivity {
             try {
                 jresponse = new JSONObject(String.valueOf(myTask.get()));
                 String responseString = jresponse.getString("url");
-             
 
 
-                pid1 = jresponse.getString("pid");
+
+                final String pid1 = jresponse.getString("pid");
                 Log.e("PID1", pid1);
                 btn_like.setOnClickListener(new View.OnClickListener() {
 
@@ -131,6 +135,23 @@ public class TimedPhotoActivity extends ActionBarActivity {
                 loadpictures.execute("http://zoofzoof.nl/pictures/" + responseString);
                 btn_message.setVisibility(View.VISIBLE);
                 btn_like.setVisibility(View.VISIBLE);
+
+
+                btn_message = (ImageButton) findViewById(R.id.button_message);
+                btn_message.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        //Start comment page
+                        Intent intent = new Intent(TimedPhotoActivity.this, CommentActivity.class);
+                        intent.putExtra("pid", pid1);
+                        intent.putExtra("id",phone_id);
+                        finish();
+                        startActivity(intent);
+
+                    }
+
+                });
 
             } catch (JSONException e) {
 //                e.printStackTrace();
@@ -267,7 +288,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
                 try {
                     jresponse = new JSONObject(String.valueOf(myTaskAfterTimer.get()));
                     String responseString = jresponse.getString("url");
-                    pid2 = jresponse.getString("pid");
+                    final String pid2 = jresponse.getString("pid");
                     Log.e("PID2", pid2);
                     btn_like.setOnClickListener(new View.OnClickListener() {
 
@@ -285,8 +306,25 @@ public class TimedPhotoActivity extends ActionBarActivity {
                     ImageView image = (ImageView) findViewById(R.id.main_image);
                     LoadPicturesTask loadpictures = new LoadPicturesTask((image));
                     loadpictures.execute("http://zoofzoof.nl/pictures/" + responseString);
+
                     btn_message.setVisibility(View.VISIBLE);
                     btn_like.setVisibility(View.VISIBLE);
+
+                    btn_message = (ImageButton) findViewById(R.id.button_message);
+                    btn_message.setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View view) {
+                            //Start comment page
+                            Intent intent = new Intent(TimedPhotoActivity.this, CommentActivity.class);
+                            intent.putExtra("pid", pid2);
+                            intent.putExtra("id",phone_id);
+                            finish();
+                            startActivity(intent);
+
+                        }
+
+                    });
 
                     //Restart timer
                     countDownTimer.cancel();
@@ -299,7 +337,7 @@ public class TimedPhotoActivity extends ActionBarActivity {
                     ImageView image = (ImageView) findViewById(R.id.main_image);
                     LoadPicturesTask loadpictures = new LoadPicturesTask((image));
                     loadpictures.execute("http://zoofzoof.nl/pictures/default/Error.png");
-                    btn_message.setVisibility(View.INVISIBLE);
+                     btn_message.setVisibility(View.INVISIBLE);
                     btn_like.setVisibility(View.INVISIBLE);
 
                     //Empty timer

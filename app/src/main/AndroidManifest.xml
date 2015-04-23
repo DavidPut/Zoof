@@ -52,6 +52,10 @@
             android:name=".PhotoDetailActivity"
             android:label="@string/title_activity_photo_detail" >
         </activity>
+        <activity
+            android:name=".CommentActivity"
+            android:label="@string/title_activity_comment" >
+        </activity>
     </application>
 
 </manifest>
