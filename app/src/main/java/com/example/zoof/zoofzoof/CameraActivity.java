@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 
 import java.io.ByteArrayOutputStream;
@@ -108,10 +109,14 @@ public class CameraActivity extends ActionBarActivity {
         phone_id = Settings.Secure.getString(this.getContentResolver(),
                 Settings.Secure.ANDROID_ID);
 
-        // Upload image to server
-        new PictureUploadTask(ba1, this, tag_value, phone_id).execute();
+        if (tag_value.matches("")) {
+            Toast.makeText(this, "You did not enter a tag", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            // Upload image to server
+            new PictureUploadTask(ba1, this, tag_value, phone_id).execute();
+        }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -81,18 +81,15 @@ public class TimedPhotoActivity extends ActionBarActivity {
         //Run task
         myTask.execute();
 
-        //Buttons
+        //Camera
         btn_camera = (Button) findViewById(R.id.button);
         btn_camera.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                //Start camera on startup
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, 100);
-
+                Intent intent = new Intent(TimedPhotoActivity.this, CameraActivity.class);
+                startActivity(intent);
             }
-
         });
 
         btn_message = (ImageButton) findViewById(R.id.button_message);

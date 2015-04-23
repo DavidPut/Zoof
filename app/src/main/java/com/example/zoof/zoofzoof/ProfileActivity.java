@@ -145,25 +145,30 @@ public class ProfileActivity extends ActionBarActivity {
         aliasText= (EditText)findViewById(R.id.aliasText);
         alias = aliasText.getText().toString();
 
-        // Upload image to server
-        new UpdateProfileTask(phone_id,alias).execute();
-
-        if(success.equals("1")){
-            Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
-            Toast.makeText(ProfileActivity.this,
-                    "Alias successfully changed.", Toast.LENGTH_LONG).show();
-            finish();
-            startActivity(intent);
+        if (alias.matches("")) {
+            Toast.makeText(this, "You did not enter a name", Toast.LENGTH_SHORT).show();
         }
-        else{
-            Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
-            Toast.makeText(ProfileActivity.this,
-                    "Something went wrong, alias not changed.", Toast.LENGTH_LONG).show();
-            finish();
-            startActivity(intent);
+        else {
+
+
+            // Upload image to server
+            new UpdateProfileTask(phone_id, alias).execute();
+
+            if (success.equals("1")) {
+                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+                Toast.makeText(ProfileActivity.this,
+                        "Alias successfully changed.", Toast.LENGTH_LONG).show();
+                finish();
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+                Toast.makeText(ProfileActivity.this,
+                        "Something went wrong, alias not changed.", Toast.LENGTH_LONG).show();
+                finish();
+                startActivity(intent);
+            }
+
         }
-
-
 
 
     }
