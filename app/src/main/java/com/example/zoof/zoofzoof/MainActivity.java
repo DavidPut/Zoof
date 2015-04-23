@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.provider.Settings;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
@@ -270,8 +271,13 @@ public class MainActivity extends ActionBarActivity {
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =
                 (SearchView) menu.findItem(R.id.search).getActionView();
-        searchView.setSearchableInfo(
+           searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
+
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.drawable.ic_launcher);
 
         return true;
     }
